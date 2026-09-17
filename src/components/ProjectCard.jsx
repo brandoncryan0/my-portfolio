@@ -1,8 +1,12 @@
-function ProjectCard({ title, category, description, skills }) {
+function ProjectCard({ id, title, category, description, skills, image }) {
   return (
     <article className="project-card">
       <div className="project-image">
-        <span>Project Preview</span>
+        {image ? (
+          <img src={image} alt={`${title} preview`} />
+        ) : (
+          <span>Project Preview</span>
+        )}
       </div>
 
       <div className="project-content">
@@ -18,7 +22,7 @@ function ProjectCard({ title, category, description, skills }) {
           ))}
         </div>
 
-        <a className="project-link" href="#">
+        <a className="project-link" href={`/projects/${id}`}>
           View Project →
         </a>
       </div>

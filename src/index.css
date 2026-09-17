@@ -245,6 +245,12 @@ section {
   font-size: 0.9rem;
 }
 
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .project-content {
   padding: 24px;
 }
@@ -300,6 +306,73 @@ section {
 
 .project-link:hover {
   text-decoration: underline;
+}
+
+/* ---------- PROJECT PAGE ---------- */
+
+.project-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 8% 120px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 70px;
+
+  color: #315b7d;
+
+  font-weight: 600;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.project-header {
+  margin-bottom: 80px;
+}
+
+.project-header h1 {
+  max-width: 850px;
+
+  margin: 10px 0 20px;
+
+  font-size: clamp(2.8rem, 6vw, 5rem);
+
+  line-height: 1.05;
+}
+
+.project-page-description {
+  max-width: 700px;
+
+  color: #555;
+
+  font-size: 1.2rem;
+}
+
+.project-details {
+  padding: 0;
+}
+
+.project-details > div {
+  padding: 45px 0;
+
+  border-top: 1px solid #ddd;
+}
+
+.project-details h2 {
+  margin-top: 0;
+
+  font-size: 1.6rem;
+}
+
+.project-details p {
+  max-width: 750px;
+
+  color: #555;
+
+  font-size: 1.05rem;
 }
 
 /* ---------- MOBILE ---------- */
