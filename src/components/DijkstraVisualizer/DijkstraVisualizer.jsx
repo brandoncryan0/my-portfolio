@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import "./DijkstraVisualizer.css";
-import { START, END, keyOf, createGrid, dijkstra } from "./dijkstra";
+import { START, END, keyOf, createGrid, dijkstra, aStar } from "./dijkstra";
+
+import { primMaze } from "./prim";
 
 export default function DijkstraVisualizer() {
   const runId = useRef(0);
@@ -9,6 +11,9 @@ export default function DijkstraVisualizer() {
     runId.current += 1;
     clearTimeout(timer.current);
   }, []);
+  const [algorithm, setAlgorithm] = useState("dijkstra");
+  const isMaze = algorithm === "prim";
+  const algorithmName = isMaze ? "Prim?s Maze" : algorithm === "astar" ? "A*" : "Dijkstra";
   const [status, setStatus] = useState("Ready to explore.");
   const [grid, setGrid] = useState(createGrid);
 
@@ -79,7 +84,7 @@ export default function DijkstraVisualizer() {
       timer.current = setTimeout(resolve, ms);
     });
     setRunning(true);
-    setStatus("Exploring nodes...");
+    setStatus(isMaze ? "Carving a maze..." : "Exploring nodes...");
     setStats({ visited: 0, cost: null, runtime: null });
 
     setVisitedCells(new Set());
@@ -87,9 +92,28 @@ export default function DijkstraVisualizer() {
 
     const startTime = performance.now();
 
-    const result = dijkstra(grid);
+    const result = isMaze ? primMaze() : algorithm === "astar" ? aStar(grid) : dijkstra(grid);
 
     const runtime = performance.now() - startTime;
+
+    if (isMaze) {
+      setGrid(result.grid.map((row, r) => row.map((_, c) =>
+        (r === START.row && c === START.col) || (r === END.row && c === END.col)
+          ? { type: "open", weight: 1 } : { type: "wall", weight: Infinity },
+      )));
+      for (let index = 0; index < result.carvedOrder.length; index++) {
+        if (runId.current !== id) return;
+        const { row, col } = result.carvedOrder[index];
+        setGrid((current) => current.map((cells, r) => r === row
+          ? cells.map((cell, c) => c === col ? { type: "open", weight: 1 } : cell) : cells));
+        setStats({ visited: index + 1, cost: null, runtime: runtime.toFixed(2) });
+        await sleep(20);
+      }
+      if (runId.current !== id) return;
+      setStatus("Maze complete. Choose Dijkstra or A* to find its shortest path.");
+      setRunning(false);
+      return;
+    }
 
     setStats({ visited: 0, cost: null, runtime: runtime.toFixed(2) });
     for (const cell of result.visitedOrder) {
@@ -182,11 +206,14 @@ export default function DijkstraVisualizer() {
         <div>
           <p className="section-label">ALGORITHM VISUALIZER</p>
 
-          <h2>Dijkstra's Algorithm</h2>
+          <h2>{algorithmName}</h2>
 
           <p className="dijkstra-description">
-            Interactive shortest-path visualization using a binary min-heap
-            priority queue and weighted graph traversal.
+            {isMaze
+              ? "Randomized Prim?s grows a spanning tree to generate a maze. It replaces the current board, including weights."
+              : algorithm === "astar"
+                ? "A* combines travel cost with Manhattan distance to guide its shortest-path search toward the target."
+                : "Dijkstra explores nodes in increasing travel cost to find the shortest path."}
           </p>
         </div>
 
@@ -195,11 +222,22 @@ export default function DijkstraVisualizer() {
           onClick={runAlgorithm}
           disabled={running}
         >
-          {running ? "Running..." : "Run Dijkstra"}
+          {running ? "Running..." : isMaze ? "Generate Maze" : `Run ${algorithmName}`}
         </button>
       </div>
 
       <div className="dijkstra-controls">
+        <label className="algorithm-select">
+          Algorithm
+          <select value={algorithm} disabled={running} onChange={(event) => {
+            resetVisualization();
+            setAlgorithm(event.target.value);
+          }}>
+            <option value="dijkstra">Dijkstra</option>
+            <option value="astar">A* (A-star)</option>
+            <option value="prim">Prim?s (maze generator)</option>
+          </select>
+        </label>
         <span>Terrain:</span>
 
         <button
@@ -268,7 +306,7 @@ export default function DijkstraVisualizer() {
 
       <div className="dijkstra-stats">
         <div>
-          <span>Nodes Explored</span>
+          <span>{isMaze ? "Cells Carved" : "Nodes Explored"}</span>
           <strong>{stats.visited}</strong>
         </div>
 
@@ -284,7 +322,7 @@ export default function DijkstraVisualizer() {
 
         <div>
           <span>Data Structure</span>
-          <strong>Min Heap</strong>
+          <strong>{isMaze ? "Random Frontier" : "Min Heap"}</strong>
         </div>
       </div>
 

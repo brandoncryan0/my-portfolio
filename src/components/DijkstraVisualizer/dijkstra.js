@@ -127,6 +127,15 @@ function getNeighbors(row, col) {
 }
 
 export function dijkstra(grid) {
+  return shortestPath(grid, () => 0);
+}
+
+export function aStar(grid) {
+  // Manhattan distance is consistent because every traversable cell costs >= 1.
+  return shortestPath(grid, (row, col) => Math.abs(row - END.row) + Math.abs(col - END.col));
+}
+
+function shortestPath(grid, heuristic) {
   const distances = Array.from({ length: ROWS }, () =>
     Array(COLS).fill(Infinity),
   );
@@ -194,7 +203,7 @@ export function dijkstra(grid) {
         queue.push({
           row: nextRow,
           col: nextCol,
-          distance: newDistance,
+          distance: newDistance + heuristic(nextRow, nextCol),
         });
       }
     }

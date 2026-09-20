@@ -229,3 +229,6 @@
   .dijkstra-stats { gap: 8px; }
   .dijkstra-stats div { padding: 10px; }
 }
+
+.algorithm-select { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.algorithm-select select { max-width: 100%; min-height: 44px; padding: 8px; border: 1px solid #315b7d; border-radius: 6px; background: white; color: #202124; }

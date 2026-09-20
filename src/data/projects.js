@@ -1,13 +1,13 @@
 const projects = [
   {
     id: "dijkstra",
-    title: "Dijkstra Shortest-Path Visualizer",
+    title: "Pathfinding & Maze Visualizer",
     category: "PROGRAMMING / ALGORITHMS",
-    description: "Build walls and weighted terrain, then watch Dijkstra find the lowest-cost route.",
+    description: "Compare Dijkstra and A* on weighted terrain, or generate a maze with randomized Prim?s.",
     skills: ["React", "JavaScript", "Graph Algorithms", "Data Structures"],
-    overview: "Explore shortest-path search step by step on an interactive grid.",
+    overview: "Explore Dijkstra and A* shortest-path searches and randomized Prim?s maze generation on an interactive grid.",
     problem: "The fewest steps do not always make the cheapest route when obstacles and terrain costs are involved.",
-    approach: "Use a binary min-heap to explore nodes in increasing cost order, then reconstruct the route from predecessor links.",
+    approach: "Use a binary min-heap for Dijkstra and A*, with Manhattan distance guiding A*. Randomized Prim?s grows a spanning tree of rooms to carve a connected maze.",
     result: "Compare explored nodes, path cost, and compute runtime across custom boards, including unreachable targets.",
   },
   {

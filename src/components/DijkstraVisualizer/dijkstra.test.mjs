@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createGrid, dijkstra, START, END, ROWS, COLS } from "./dijkstra.js";
+import { createGrid, dijkstra, aStar, START, END, ROWS, COLS } from "./dijkstra.js";
 
 function verifyPath(grid, result) {
   assert.deepEqual(result.path[0], START);
@@ -62,4 +62,24 @@ test("reports no path across a complete barrier", () => {
   assert.equal(result.cost, Infinity);
   assert.deepEqual(result.path, []);
   assert.ok(result.visitedOrder.every(({ col }) => col < 10));
+});
+
+
+test("A* agrees with Dijkstra across deterministic weighted and blocked boards", () => {
+  let seed = 42;
+  const random = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };
+  for (let trial = 0; trial < 50; trial++) {
+    const grid = createGrid();
+    for (let row = 0; row < ROWS; row++) {
+      for (let col = 0; col < COLS; col++) {
+        if ((row === START.row && col === START.col) || (row === END.row && col === END.col)) continue;
+        const value = random();
+        grid[row][col] = value < 0.25 ? { type: "wall", weight: Infinity } : { type: "open", weight: value < 0.6 ? 5 : 1 };
+      }
+    }
+    const result = aStar(grid);
+    assert.equal(result.cost, dijkstra(grid).cost);
+    if (result.cost !== Infinity) verifyPath(grid, result);
+    else assert.deepEqual(result.path, []);
+  }
 });
