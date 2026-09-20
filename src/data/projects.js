@@ -1,5 +1,16 @@
 const projects = [
   {
+    id: "eigenvalue-visualizer",
+    title: "Eigenvalue & Eigenvector Visualizer",
+    category: "MATHEMATICS / PROGRAMMING",
+    description: "Explore how a 2 by 2 matrix transforms the plane, and discover the directions preserved by the transformation.",
+    skills: ["Linear Algebra", "React", "JavaScript", "SVG"],
+    overview: "An interactive connection between matrix calculations and geometry, with real and complex eigenvalues, eigenvectors, and a step-by-step characteristic polynomial.",
+    problem: "Eigenvectors and diagonalizability can feel abstract without seeing how a matrix stretches, reflects, shears, or rotates the plane.",
+    approach: "Separate tested mathematical calculations from a responsive SVG plane, and interpolate between the identity and the selected matrix. Render the derivation using KaTeX.",
+    result: "Explore presets or a custom matrix, compare algebraic and geometric behavior, and distinguish repeated, defective, and complex eigenvalue cases.",
+  },
+  {
     id: "dijkstra",
     title: "Pathfinding & Maze Visualizer",
     category: "PROGRAMMING / ALGORITHMS",

@@ -1,0 +1,43 @@
+.eigen-visualizer {
+  padding: 24px;
+  margin-bottom: 60px;
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  min-width: 0;
+}
+.eigen-visualizer h2 { margin-top: 0; font-size: 1.7rem; }
+.eigen-visualizer h3 { margin-bottom: 8px; }
+.eigen-visualizer p, .eigen-plane figcaption { color: #555; }
+.eigen-visualizer input, .eigen-visualizer select { font: inherit; }
+.eigen-visualizer :focus-visible { outline: 3px solid #315b7d; outline-offset: 3px; }
+.eigen-preset { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-weight: 600; }
+.eigen-preset select { padding: 10px; max-width: 100%; border: 1px solid #315b7d; border-radius: 5px; background: #fff; color: #202124; }
+.eigen-input-row { display: flex; align-items: center; gap: 24px; margin: 24px 0; }
+.eigen-input-row > p { flex: 1; font-size: 0.9rem; }
+.eigen-matrix-input { border: 0; padding: 0; margin: 0; min-width: 0; flex: 1; }
+.eigen-matrix-input legend { font-weight: bold; margin-bottom: 12px; }
+.eigen-matrix-brackets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; border-inline: 3px solid #315b7d; padding: 8px 12px; }
+.eigen-matrix-brackets label { display: flex; align-items: center; gap: 6px; }
+.eigen-matrix-brackets input { width: 100%; min-width: 0; padding: 8px; border: 1px solid #aaa; border-radius: 4px; }
+.eigen-matrix-brackets input[aria-invalid="true"] { border-color: #b42318; }
+.eigen-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.eigen-summary > div { padding: 12px; background: #f7f7f5; border-radius: 5px; }
+.eigen-summary h3 { margin: 0; font-size: 1rem; }
+.eigen-formula { max-width: 100%; overflow-x: auto; padding: 3px; }
+.eigen-formula .katex-display { margin: 0.6em 0; text-align: left; }
+.eigen-pair { border-bottom: 1px solid #ddd; padding: 8px 0; }
+.eigen-animation { border-block: 1px solid #ddd; margin-top: 24px; padding: 16px 0; }
+.eigen-animation input[type="range"] { display: block; width: 100%; min-height: 44px; accent-color: #315b7d; }
+.eigen-slider-labels { display: flex; justify-content: space-between; font-size: 0.85rem; color: #555; }
+.eigen-plane { margin: 16px 0; }
+.eigen-plane svg { display: block; width: 100%; height: auto; background: #fafaf9; border: 1px solid #ddd; border-radius: 5px; }
+.eigen-plane text { font: 12px Arial, sans-serif; }
+.eigen-plane figcaption { font-size: 0.85rem; margin-top: 12px; }
+.eigen-blue { color: #315b7d; }
+@media (max-width: 700px) {
+  .eigen-visualizer { padding: 14px; }
+  .eigen-input-row { flex-direction: column; align-items: stretch; gap: 8px; }
+  .eigen-summary { grid-template-columns: 1fr; }
+  .eigen-visualizer .katex { font-size: 1em; }
+}

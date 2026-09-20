@@ -1,6 +1,9 @@
 import { useParams } from "react-router-dom";
 import projects from "../data/projects";
 import DijkstraVisualizer from "../components/DijkstraVisualizer/DijkstraVisualizer";
+import { lazy, Suspense } from "react";
+
+const EigenvalueVisualizer = lazy(() => import("../components/EigenvalueVisualizer/EigenvalueVisualizer"));
 
 function ProjectPage() {
   const { projectId } = useParams();
@@ -37,6 +40,11 @@ function ProjectPage() {
       </header>
 
       {project.id === "dijkstra" && <DijkstraVisualizer />}
+      {project.id === "eigenvalue-visualizer" && (
+        <Suspense fallback={<p role="status">Loading eigenvalue visualizer...</p>}>
+          <EigenvalueVisualizer />
+        </Suspense>
+      )}
 
       <section className="project-details">
         <div>
