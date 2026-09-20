@@ -28,6 +28,7 @@ function App() {
       <Route path="/" element={<Home />} />
 
       <Route path="/projects/:projectId" element={<ProjectPage />} />
+
     </Routes>
   );
 }

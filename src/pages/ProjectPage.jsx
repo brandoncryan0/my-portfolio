@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import projects from "../data/projects";
+import DijkstraVisualizer from "../components/DijkstraVisualizer/DijkstraVisualizer";
 
 function ProjectPage() {
   const { projectId } = useParams();
@@ -34,6 +35,8 @@ function ProjectPage() {
           ))}
         </div>
       </header>
+
+      {project.id === "dijkstra" && <DijkstraVisualizer />}
 
       <section className="project-details">
         <div>

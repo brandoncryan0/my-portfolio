@@ -1,0 +1,231 @@
+.dijkstra-project {
+  max-width: 1100px;
+  margin: 0 auto 60px;
+  padding: 24px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  background: #fff;
+  color: #202124;
+}
+
+.dijkstra-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.dijkstra-project .section-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: #315b7d;
+}
+
+.dijkstra-header h2 {
+  margin: 5px 0;
+  font-size: 2rem;
+}
+
+.dijkstra-description {
+  color: #555;
+  max-width: 600px;
+}
+
+.run-button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dijkstra-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.dijkstra-controls button {
+  border: 1px solid #315b7d;
+  background: #fff;
+  color: #202124;
+  border-radius: 6px;
+  padding: 7px 12px;
+  cursor: pointer;
+}
+
+.dijkstra-controls button.active {
+  border-color: #202124;
+  background: #dce8f0;
+}
+
+.dijkstra-grid {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  border: 1px solid #b9c4cc;
+  width: 100%;
+  aspect-ratio: 20 / 12;
+}
+
+.dijkstra-cell {
+  border: 1px solid #d6dee4;
+  background: #fff;
+  color: #202124;
+  padding: 0;
+  cursor: pointer;
+  font-size: 0.7rem;
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
+}
+
+.dijkstra-cell:hover {
+  transform: scale(1.08);
+  z-index: 1;
+}
+
+.dijkstra-cell.wall {
+  background: #202124;
+}
+
+.dijkstra-cell.weighted {
+  background: #f1d8a1;
+}
+
+.dijkstra-cell.visited {
+  background: #a8cadf;
+}
+
+.dijkstra-cell.path {
+  background: #dbc342;
+  color: #111;
+}
+
+.dijkstra-cell.start {
+  background: #388e3c;
+  font-weight: bold;
+}
+
+.dijkstra-cell.end {
+  background: #c43d3d;
+  font-weight: bold;
+}
+
+.dijkstra-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.dijkstra-stats div {
+  background: #f7f7f5;
+  padding: 14px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dijkstra-stats span {
+  color: #555;
+  font-size: 0.75rem;
+}
+
+.dijkstra-stats strong {
+  margin-top: 4px;
+  font-size: 1.1rem;
+}
+
+.dijkstra-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 20px;
+  color: #555;
+  font-size: 0.8rem;
+}
+
+.dijkstra-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dijkstra-legend i {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  border-radius: 2px;
+}
+
+.legend-start {
+  background: #388e3c;
+}
+
+.legend-end {
+  background: #c43d3d;
+}
+
+.legend-wall {
+  background: #202124;
+  border: 1px solid #555;
+}
+
+.legend-weight {
+  background: #f1d8a1;
+}
+
+.legend-visited {
+  background: #a8cadf;
+}
+
+.legend-path {
+  background: #dbc342;
+}
+
+@media (max-width: 700px) {
+  .dijkstra-project {
+    padding: 18px;
+  }
+
+  .dijkstra-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dijkstra-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dijkstra-cell {
+    font-size: 0.75rem;
+  }
+}
+
+/* Keep terrain controls consistent with the portfolio's button palette. */
+.dijkstra-project button, .dijkstra-project select { font-family: inherit; }
+.dijkstra-project .run-button { color: #fff; flex-shrink: 0; }
+.dijkstra-project button:disabled { cursor: default; }
+.dijkstra-controls button:disabled, .run-button:disabled { opacity: 0.6; }
+.dijkstra-project :focus-visible { outline: 3px solid #315b7d; outline-offset: 2px; z-index: 2; }
+.dijkstra-board { overflow-x: auto; padding: 3px; }
+.dijkstra-grid { min-width: 560px; }
+.dijkstra-cell { min-width: 0; min-height: 28px; }
+.dijkstra-cell.start, .dijkstra-cell.end { color: #fff; }
+.dijkstra-controls button { min-height: 44px; }
+.dijkstra-cell.visited { animation: dijkstra-reveal 0.2s ease-out; }
+.dijkstra-cell.path { animation: dijkstra-reveal 0.25s ease-out; }
+@keyframes dijkstra-reveal { from { opacity: 0.4; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .dijkstra-cell { animation: none; transition: none; }
+  .dijkstra-cell:hover { transform: none; }
+}
+@media (max-width: 700px) {
+  .dijkstra-project { padding: 12px; }
+  .dijkstra-header h2 { font-size: 1.5rem; }
+  .dijkstra-stats { gap: 8px; }
+  .dijkstra-stats div { padding: 10px; }
+}
