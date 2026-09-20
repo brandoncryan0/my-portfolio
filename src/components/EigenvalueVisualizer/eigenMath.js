@@ -32,6 +32,17 @@ export function analyzeMatrix(matrix) {
   if (matrix.length !== 4 || matrix.some((value) => !Number.isFinite(value) || Math.abs(value) > 1000)) {
     throw new RangeError("Enter four finite numbers between -1000 and 1000.");
   }
+  const scale = Math.max(...matrix.map(Math.abs));
+  // Rescale tiny matrices before squaring to avoid underflow changing root type.
+  if (scale > 0 && scale < 1e-100) {
+    const normalized = analyzeMatrix(matrix.map((value) => value / scale));
+    return { ...normalized, trace: normalized.trace * scale,
+      determinant: normalized.determinant * scale * scale,
+      discriminant: normalized.discriminant * scale * scale,
+      eigenpairs: normalized.eigenpairs.map((pair) => ({ ...pair,
+        real: pair.real * scale, imaginary: pair.imaginary * scale,
+      })) };
+  }
   const [a, b, c, d] = matrix;
   const trace = a + d;
   const determinant = a * d - b * c;

@@ -13,7 +13,6 @@ export default function EigenvalueVisualizer() {
   const matrix = entries.map(Number);
   const valid = entries.every((entry, index) => entry.trim() !== "" && Number.isFinite(matrix[index]) && Math.abs(matrix[index]) <= 1000);
   const result = valid ? analyzeMatrix(matrix) : null;
-  let vectorIndex = 0;
 
   return <section className="eigen-visualizer" aria-label="Interactive eigenvalue and eigenvector visualizer">
     <h2>Explore a linear transformation</h2>
@@ -52,7 +51,7 @@ export default function EigenvalueVisualizer() {
         <MathFormula tex={String.raw`\lambda_{${index + 1}}=${complexTex(pair)}`} />
         {pair.multiplicity === 2 && <p>Algebraic multiplicity 2; eigenspace dimension {pair.vectors.length}.</p>}
         {pair.vectors.map((vector, i) => {
-          vectorIndex += 1;
+          const vectorIndex = index + i + 1;
           return <MathFormula key={i} tex={String.raw`v_{${vectorIndex}}=${vectorTex(vector)},\quad Av_{${vectorIndex}}=(${numberTex(pair.real)})v_{${vectorIndex}}`} />;
         })}
         {pair.complexVector && <MathFormula tex={String.raw`v_{${index + 1}}=\begin{bmatrix}${pair.complexVector.map(complexTex).join("\\")}\end{bmatrix}\in\mathbb{C}^2`} />}
