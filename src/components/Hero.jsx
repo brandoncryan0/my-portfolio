@@ -1,26 +1,30 @@
 function Hero() {
   return (
     <section className="hero">
+      <div className="hero-topline">
+        <span>PORTFOLIO / 2026</span>
+        <span>MATHEMATICS + TECHNOLOGY</span>
+      </div>
+
       <div className="hero-content">
-        <p className="hero-intro">HELLO, I'M</p>
+        <p className="hero-name">Brandon Cryan</p>
 
-        <h1>Brandon Cryan</h1>
+        <h1>
+          Mathematics, software,
+          <br />
+          and technical communication.
+        </h1>
 
-        <h2>Mathematics • Technology • Technical Communication</h2>
+        <div className="hero-lower">
+          <p className="hero-description">
+            I build tools, visualizations, and technical content that make
+            complex problems easier to understand.
+          </p>
 
-        <p className="hero-description">
-          I use analytical thinking, technical skills, and communication to
-          solve problems and make complex ideas easier to understand.
-        </p>
-
-        <div className="hero-buttons">
-          <a className="button primary-button" href="#projects">
-            View My Projects
-          </a>
-
-          <a className="button secondary-button" href="/resume.pdf">
-            View Resume
-          </a>
+          <div className="hero-actions">
+            <a href="#projects">View selected work ↘</a>
+            <a href="/resume.pdf">View résumé ↗</a>
+          </div>
         </div>
       </div>
     </section>

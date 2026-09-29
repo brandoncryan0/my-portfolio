@@ -1,13 +1,22 @@
 function Navbar() {
   return (
     <nav className="navbar">
-      <div className="nav-name">Brandon Cryan</div>
+      <a className="nav-name" href="/">
+        Brandon Cryan
+      </a>
 
       <div className="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="/#projects">Work</a>
+        <a href="/#about">About</a>
         <a href="/resume.pdf">Resume</a>
+
+        <a
+          href="https://github.com/brandoncryan0"
+          target="_blank"
+          rel="noreferrer"
+        >
+          GitHub
+        </a>
       </div>
     </nav>
   );
