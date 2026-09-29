@@ -132,7 +132,10 @@ export function dijkstra(grid) {
 
 export function aStar(grid) {
   // Manhattan distance is consistent because every traversable cell costs >= 1.
-  return shortestPath(grid, (row, col) => Math.abs(row - END.row) + Math.abs(col - END.col));
+  return shortestPath(
+    grid,
+    (row, col) => Math.abs(row - END.row) + Math.abs(col - END.col),
+  );
 }
 
 function shortestPath(grid, heuristic) {
@@ -230,4 +233,3 @@ function shortestPath(grid, heuristic) {
     cost: distances[END.row][END.col],
   };
 }
-
