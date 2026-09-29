@@ -604,6 +604,54 @@ img {
 }
 
 /* =========================================================
+   PROJECT LIVE DEMO
+   ========================================================= */
+
+.project-live-demo {
+  margin: 0 0 100px;
+  padding: 60px 0 80px;
+
+  border-top: 1px solid #c8c4ba;
+  border-bottom: 1px solid #c8c4ba;
+}
+
+.project-demo-heading {
+  max-width: 700px;
+
+  margin-bottom: 45px;
+}
+
+.project-demo-heading h2 {
+  margin: 8px 0 18px;
+
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 500;
+
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.project-demo-heading > p:last-child {
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #514d47;
+
+  line-height: 1.7;
+}
+
+.project-demo-container {
+  width: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid #c8c4ba;
+
+  background: #ffffff;
+}
+
+/* =========================================================
    PROJECT PAGE
    ========================================================= */
 
@@ -855,7 +903,7 @@ img {
   }
 
   .work-info h2 {
-    font-size: clamp(2.3rem, 11vw, 3.5rem);
+    font-size: clamp(2.2rem, 3.4vw, 4rem);
   }
 
   /* About */

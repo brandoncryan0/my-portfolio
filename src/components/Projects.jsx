@@ -30,6 +30,8 @@ function Projects() {
                   </span>
                 </div>
               )}
+
+              <span className="work-visual-label">View project ↗</span>
             </Link>
 
             <div className="work-info">
