@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import projects from "../data/projects";
 
@@ -27,6 +27,11 @@ function ProjectPage() {
       </main>
     );
   }
+
+  const previousProject =
+    projects[(projectIndex - 1 + projects.length) % projects.length];
+
+  const nextProject = projects[(projectIndex + 1) % projects.length];
 
   return (
     <main className="project-page">
@@ -253,6 +258,32 @@ function ProjectPage() {
           </div>
         )}
       </section>
+
+      {/* =====================================================
+          PREVIOUS / NEXT PROJECT
+          ===================================================== */}
+
+      <nav className="project-pagination" aria-label="Project navigation">
+        <Link
+          className="project-pagination-item project-pagination-previous"
+          to={`/projects/${previousProject.id}`}
+        >
+          <span className="project-pagination-label">← Previous project</span>
+
+          <span className="project-pagination-title">
+            {previousProject.title}
+          </span>
+        </Link>
+
+        <Link
+          className="project-pagination-item project-pagination-next"
+          to={`/projects/${nextProject.id}`}
+        >
+          <span className="project-pagination-label">Next project →</span>
+
+          <span className="project-pagination-title">{nextProject.title}</span>
+        </Link>
+      </nav>
     </main>
   );
 }

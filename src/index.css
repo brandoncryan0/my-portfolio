@@ -318,8 +318,6 @@ img {
   transform: scale(1.025);
 }
 
-/* Pathfinding */
-
 .project-card-image-dijkstra {
   padding: 12px;
 
@@ -329,8 +327,6 @@ img {
 .project-card-image-dijkstra img {
   object-fit: contain;
 }
-
-/* Eigenvalue visualizer */
 
 .project-card-image-eigenvalue-visualizer {
   padding: 12px;
@@ -342,8 +338,6 @@ img {
   object-fit: contain;
 }
 
-/* Tiny Bus */
-
 .project-card-image-technical-writing {
   padding: 24px;
 
@@ -353,8 +347,6 @@ img {
 .project-card-image-technical-writing img {
   object-fit: contain;
 }
-
-/* Workout Tracker */
 
 .project-card-image-fitness-tracker {
   padding: 18px 52px;
@@ -1107,6 +1099,67 @@ img {
 }
 
 /* =========================================================
+   PROJECT NAVIGATION
+   ========================================================= */
+
+.project-pagination {
+  margin-top: 110px;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  border-top: 1px solid #aaa69d;
+  border-bottom: 1px solid #aaa69d;
+}
+
+.project-pagination-item {
+  min-height: 190px;
+
+  padding: 28px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  transition: opacity 0.2s ease;
+}
+
+.project-pagination-item:hover {
+  opacity: 0.55;
+}
+
+.project-pagination-previous {
+  padding-right: 40px;
+}
+
+.project-pagination-next {
+  padding-left: 40px;
+
+  text-align: right;
+
+  border-left: 1px solid #aaa69d;
+}
+
+.project-pagination-label {
+  color: #77736c;
+
+  font-size: 0.62rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.project-pagination-title {
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(1.8rem, 3vw, 3rem);
+
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+/* =========================================================
    SMALL LAPTOP
    ========================================================= */
 
@@ -1220,6 +1273,14 @@ img {
 
   .project-case-study-image {
     padding: 30px;
+  }
+
+  .project-pagination-item {
+    min-height: 170px;
+  }
+
+  .project-pagination-title {
+    font-size: 2rem;
   }
 }
 
@@ -1545,5 +1606,36 @@ img {
 
   .project-image-caption {
     font-size: 0.65rem;
+  }
+
+  /* Project navigation */
+
+  .project-pagination {
+    margin-top: 75px;
+
+    grid-template-columns: 1fr;
+  }
+
+  .project-pagination-item {
+    min-height: 145px;
+
+    padding: 25px 0;
+  }
+
+  .project-pagination-previous {
+    padding-right: 0;
+  }
+
+  .project-pagination-next {
+    padding-left: 0;
+
+    text-align: left;
+
+    border-left: 0;
+    border-top: 1px solid #aaa69d;
+  }
+
+  .project-pagination-title {
+    font-size: 2rem;
   }
 }
