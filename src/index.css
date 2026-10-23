@@ -297,6 +297,13 @@ img {
   background: #171717;
 }
 
+.work-visual img[src*="fitness-tracker-preview"] {
+  object-fit: contain;
+  padding: 35px;
+
+  background: #171717;
+}
+
 .work-visual:hover img {
   transform: scale(1.02);
 }
@@ -779,7 +786,7 @@ img {
   letter-spacing: 0.08em;
 }
 
-/* ---------- Technical writing case-study visual ---------- */
+/* ---------- Tiny Bus case-study visual ---------- */
 
 .project-case-study-visual {
   margin-bottom: 90px;
@@ -817,6 +824,57 @@ img {
 
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+.project-detail-visual {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* ---------- Mobile application showcase ---------- */
+
+.project-mobile-showcase {
+  margin-bottom: 90px;
+  padding: 40px 0 60px;
+
+  border-top: 1px solid #c8c4ba;
+  border-bottom: 1px solid #c8c4ba;
+}
+
+.project-phone-preview {
+  width: min(420px, 100%);
+
+  margin: 30px auto 0;
+  padding: 18px;
+
+  background: #171717;
+}
+
+.project-phone-preview img {
+  width: 100%;
+  height: auto;
+
+  display: block;
+}
+
+.project-fitness-history {
+  padding: 60px 0;
+}
+
+.project-history-preview {
+  width: min(600px, 100%);
+
+  margin: 30px auto 0;
+  padding: 18px;
+
+  background: #171717;
+}
+
+.project-history-preview img {
+  width: 100%;
+  height: auto;
+
+  display: block;
 }
 
 /* ---------- Project written details ---------- */
@@ -984,6 +1042,10 @@ img {
     padding: 18px;
   }
 
+  .work-visual img[src*="fitness-tracker-preview"] {
+    padding: 18px;
+  }
+
   .work-placeholder {
     padding: 20px;
   }
@@ -1065,12 +1127,17 @@ img {
     padding: 18px;
   }
 
-  .project-image-caption {
-    font-size: 0.65rem;
+  .project-mobile-showcase {
+    margin-bottom: 60px;
+    padding: 30px 0 40px;
   }
 
-  .project-detail-visual {
-    padding-top: 60px;
-    padding-bottom: 60px;
+  .project-phone-preview {
+    width: min(340px, 100%);
+    padding: 10px;
+  }
+
+  .project-image-caption {
+    font-size: 0.65rem;
   }
 }

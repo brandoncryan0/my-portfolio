@@ -84,6 +84,34 @@ const projects = [
 
     githubUrl: "https://github.com/brandoncryan0/tiny-bus-documentation",
   },
+  {
+    id: "fitness-tracker",
+
+    title: "Workout Tracker",
+
+    category: "MOBILE DEVELOPMENT / PRODUCT DESIGN",
+
+    description:
+      "A mobile-first workout logging app designed for fast gym use, with local workout history, previous-weight recall, and an Android build powered by Capacitor.",
+
+    skills: ["React", "JavaScript", "Local Storage", "Capacitor", "Android"],
+
+    image: "/images/projects/fitness-tracker-preview.png",
+
+    overview:
+      "A lightweight workout tracker built around a simple lifting workflow. Users choose a workout, enter weights for each exercise, save the session, and automatically see their previous weights the next time they perform that workout.",
+
+    problem:
+      "Many fitness apps add unnecessary complexity through accounts, cloud services, dashboards, and features that slow down basic workout logging. I wanted a tracker focused specifically on quickly recording the information I use during a workout.",
+
+    approach:
+      "I built the interface in React and stored workout history directly on the device with localStorage. Previous exercise weights are retrieved from the latest saved workout, workout history can be reviewed or deleted, and Capacitor packages the Vite application as an Android app.",
+
+    result:
+      "The result is a focused local-first workout tracker that retains workout history and previous weights without requiring an account, server, or cloud database.",
+
+    githubUrl: "https://github.com/brandoncryan0/fitness-tracker",
+  },
 ];
 
 export default projects;

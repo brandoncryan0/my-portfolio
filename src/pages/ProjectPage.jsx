@@ -41,6 +41,7 @@ function ProjectPage() {
             <span key={skill}>{skill}</span>
           ))}
         </div>
+
         {(project.liveUrl || project.pdfUrl || project.githubUrl) && (
           <div className="project-links">
             {project.liveUrl && (
@@ -64,6 +65,32 @@ function ProjectPage() {
         )}
       </header>
 
+      {/* =====================================================
+          FITNESS TRACKER MAIN SCREEN
+          ===================================================== */}
+
+      {project.id === "fitness-tracker" && project.image && (
+        <section className="project-mobile-showcase">
+          <p className="section-label">MOBILE APPLICATION</p>
+
+          <div className="project-phone-preview">
+            <img
+              src={project.image}
+              alt="Workout Tracker mobile application interface"
+            />
+          </div>
+
+          <p className="project-image-caption">
+            Android workout logging interface showing workout selection,
+            previous-weight recall, and exercise tracking.
+          </p>
+        </section>
+      )}
+
+      {/* =====================================================
+          TINY BUS MAIN DIAGRAM
+          ===================================================== */}
+
       {project.id === "technical-writing" && project.image && (
         <section className="project-case-study-visual">
           <p className="section-label">SCHEMATIC RECONSTRUCTION</p>
@@ -81,6 +108,10 @@ function ProjectPage() {
           </p>
         </section>
       )}
+
+      {/* =====================================================
+          DIJKSTRA INTERACTIVE DEMO
+          ===================================================== */}
 
       {project.id === "dijkstra" && (
         <section className="project-live-demo">
@@ -100,6 +131,10 @@ function ProjectPage() {
           </div>
         </section>
       )}
+
+      {/* =====================================================
+          EIGENVALUE INTERACTIVE DEMO
+          ===================================================== */}
 
       {project.id === "eigenvalue-visualizer" && (
         <section className="project-live-demo">
@@ -124,10 +159,15 @@ function ProjectPage() {
         </section>
       )}
 
+      {/* =====================================================
+          PROJECT DETAILS
+          ===================================================== */}
+
       <section className="project-details">
         {project.overview && (
           <div>
             <h2>Overview</h2>
+
             <p>{project.overview}</p>
           </div>
         )}
@@ -135,6 +175,7 @@ function ProjectPage() {
         {project.problem && (
           <div>
             <h2>The Problem</h2>
+
             <p>{project.problem}</p>
           </div>
         )}
@@ -142,9 +183,37 @@ function ProjectPage() {
         {project.approach && (
           <div>
             <h2>My Approach</h2>
+
             <p>{project.approach}</p>
           </div>
         )}
+
+        {/* ===================================================
+            FITNESS TRACKER HISTORY SCREEN
+            =================================================== */}
+
+        {project.id === "fitness-tracker" && project.historyImage && (
+          <div className="project-fitness-history">
+            <p className="section-label">LOCAL WORKOUT HISTORY</p>
+
+            <div className="project-history-preview">
+              <img
+                src={project.historyImage}
+                alt="Workout Tracker history screen showing saved workouts"
+              />
+            </div>
+
+            <p className="project-image-caption">
+              Saved workouts remain available locally on the device and can be
+              reviewed or removed without requiring an account or cloud
+              connection.
+            </p>
+          </div>
+        )}
+
+        {/* ===================================================
+            TINY BUS COMPONENT DIAGRAM
+            =================================================== */}
 
         {project.id === "technical-writing" && project.detailImage && (
           <div className="project-detail-visual">
@@ -167,6 +236,7 @@ function ProjectPage() {
         {project.result && (
           <div>
             <h2>Result</h2>
+
             <p>{project.result}</p>
           </div>
         )}
