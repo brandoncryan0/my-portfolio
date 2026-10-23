@@ -111,8 +111,6 @@ img {
   flex-direction: column;
 }
 
-/* ---------- Top line ---------- */
-
 .hero-topline {
   display: flex;
   align-items: center;
@@ -133,8 +131,6 @@ img {
 
   background: #8f8b84;
 }
-
-/* ---------- Main hero layout ---------- */
 
 .hero-main {
   flex: 1;
@@ -193,8 +189,6 @@ img {
   line-height: 1.4;
 }
 
-/* ---------- Focus areas ---------- */
-
 .hero-focus {
   padding: 20px 0 20px 55px;
 
@@ -215,8 +209,6 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.28em;
 }
-
-/* ---------- Hero links ---------- */
 
 .hero-actions {
   padding-top: 24px;
@@ -278,8 +270,6 @@ img {
   padding: 110px 4% 150px;
 }
 
-/* ---------- Project grid ---------- */
-
 .project-card-grid {
   margin-top: 55px;
 
@@ -288,8 +278,6 @@ img {
 
   gap: 18px;
 }
-
-/* ---------- Card ---------- */
 
 .project-card {
   min-width: 0;
@@ -306,45 +294,120 @@ img {
   position: relative;
 
   aspect-ratio: 4 / 3;
-
   margin-top: 16px;
 
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   overflow: hidden;
 
-  background: #d8d4ca;
+  background: #d9d5cb;
 }
 
 .project-card-image img {
   width: 100%;
   height: 100%;
 
-  object-fit: cover;
-
-  transition:
-    transform 0.4s ease,
-    opacity 0.4s ease;
-}
-
-.project-card-image img[src*="tiny-bus-preview"] {
-  padding: 18px;
-
   object-fit: contain;
 
-  background: #171717;
-}
-
-.project-card-image img[src*="fitness-tracker-preview"] {
-  padding: 18px;
-
-  object-fit: contain;
-
-  background: #171717;
+  transition: transform 0.4s ease;
 }
 
 .project-card-image:hover img {
   transform: scale(1.025);
+}
+
+/* Pathfinding */
+
+.project-card-image-dijkstra {
+  padding: 12px;
+
+  background: #171717;
+}
+
+.project-card-image-dijkstra img {
+  object-fit: contain;
+}
+
+/* Eigenvalue visualizer */
+
+.project-card-image-eigenvalue-visualizer {
+  padding: 12px;
+
+  background: #e4e0d7;
+}
+
+.project-card-image-eigenvalue-visualizer img {
+  object-fit: contain;
+}
+
+/* Tiny Bus */
+
+.project-card-image-technical-writing {
+  padding: 24px;
+
+  background: #171717;
+}
+
+.project-card-image-technical-writing img {
+  object-fit: contain;
+}
+
+/* Workout Tracker */
+
+.project-card-image-fitness-tracker {
+  padding: 18px 52px;
+
+  background: #171717;
+}
+
+.project-card-image-fitness-tracker img {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+/* ---------- Image overlay ---------- */
+
+.project-card-overlay {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 12px 14px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #f1efe9;
+
+  font-size: 0.58rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+
+  background: linear-gradient(
+    to top,
+    rgba(23, 23, 23, 0.78),
+    rgba(23, 23, 23, 0)
+  );
+
+  pointer-events: none;
+
+  opacity: 0.85;
+
+  transition: opacity 0.25s ease;
+}
+
+.project-card-image:hover .project-card-overlay {
+  opacity: 1;
 }
 
 .project-card-placeholder {
@@ -363,7 +426,7 @@ img {
   background: #d8d4ca;
 }
 
-/* ---------- Card text ---------- */
+/* ---------- Card content ---------- */
 
 .project-card-content {
   flex: 1;
@@ -400,6 +463,8 @@ img {
 }
 
 .project-card h2 {
+  min-height: 6.8rem;
+
   margin: 0;
 
   font-family: Georgia, "Times New Roman", serif;
@@ -420,6 +485,8 @@ img {
 }
 
 .project-card-description {
+  min-height: 8.5rem;
+
   margin: 18px 0 20px;
 
   color: #56524c;
@@ -428,11 +495,12 @@ img {
   line-height: 1.65;
 }
 
-/* ---------- Skills ---------- */
-
 .project-card-skills {
+  min-height: 58px;
+
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
 
   gap: 6px;
 
@@ -451,8 +519,6 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
-
-/* ---------- Project link ---------- */
 
 .project-card-link {
   width: fit-content;
@@ -691,65 +757,115 @@ img {
 }
 
 /* =========================================================
-   PROJECT LIVE DEMO
-   ========================================================= */
-
-.project-live-demo {
-  margin: 0 0 100px;
-  padding: 60px 0 80px;
-
-  border-top: 1px solid #c8c4ba;
-  border-bottom: 1px solid #c8c4ba;
-}
-
-.project-demo-heading {
-  max-width: 700px;
-
-  margin-bottom: 45px;
-}
-
-.project-demo-heading h2 {
-  margin: 8px 0 18px;
-
-  font-family: Georgia, "Times New Roman", serif;
-
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 400;
-
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-.project-demo-heading > p:last-child {
-  max-width: 650px;
-
-  margin: 0;
-
-  color: #514d47;
-
-  line-height: 1.7;
-}
-
-.project-demo-container {
-  width: 100%;
-
-  overflow: hidden;
-
-  border: 1px solid #c8c4ba;
-
-  background: #ffffff;
-}
-
-/* =========================================================
    PROJECT PAGE
    ========================================================= */
 
 .project-page {
-  width: min(1000px, 100%);
+  width: min(1200px, 100%);
 
   margin: 0 auto;
-  padding: 60px 8% 120px;
+  padding: 60px 6% 140px;
 }
+
+.back-link {
+  display: inline-block;
+
+  margin-bottom: 70px;
+  padding-bottom: 2px;
+
+  border-bottom: 1px solid #171717;
+
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  transition: opacity 0.2s ease;
+}
+
+.back-link:hover {
+  opacity: 0.55;
+}
+
+/* ---------- Project header ---------- */
+
+.project-header {
+  margin-bottom: 90px;
+}
+
+.project-header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  padding-bottom: 16px;
+
+  border-bottom: 1px solid #c8c4ba;
+
+  color: #66625c;
+
+  font-size: 0.62rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.project-header h1 {
+  max-width: 1000px;
+
+  margin: 45px 0 30px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(4rem, 7.5vw, 7.5rem);
+  font-weight: 400;
+
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.project-page-description {
+  max-width: 760px;
+
+  margin: 0 0 35px;
+
+  color: #514d47;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  line-height: 1.5;
+}
+
+/* ---------- Project skills ---------- */
+
+.project-skills {
+  margin: 20px 0;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.project-skills span {
+  padding: 6px 10px;
+
+  border: 1px solid #aaa59b;
+
+  color: #514d47;
+
+  font-size: 0.67rem;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- Project links ---------- */
 
 .project-links {
   margin-top: 32px;
@@ -780,31 +896,10 @@ img {
   opacity: 0.5;
 }
 
-.back-link {
-  display: inline-block;
-
-  margin-bottom: 70px;
-  padding-bottom: 2px;
-
-  border-bottom: 1px solid #171717;
-
-  font-size: 0.75rem;
-  font-weight: 600;
-
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.back-link:hover {
-  opacity: 0.55;
-}
-
-.project-header {
-  margin-bottom: 80px;
-}
+/* ---------- Shared project labels ---------- */
 
 .section-label {
-  margin-bottom: 10px;
+  margin: 0 0 10px;
 
   color: #66625c;
 
@@ -815,54 +910,62 @@ img {
   letter-spacing: 0.13em;
 }
 
-.project-header h1 {
-  max-width: 850px;
+/* =========================================================
+   PROJECT LIVE DEMO
+   ========================================================= */
 
-  margin: 10px 0 25px;
+.project-live-demo {
+  margin: 0 0 100px;
+  padding: 60px 0 80px;
+
+  border-top: 1px solid #c8c4ba;
+  border-bottom: 1px solid #c8c4ba;
+}
+
+.project-demo-heading {
+  max-width: 700px;
+
+  margin-bottom: 45px;
+}
+
+.project-demo-heading h2 {
+  margin: 8px 0 18px;
 
   font-family: Georgia, "Times New Roman", serif;
 
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(2.5rem, 4.5vw, 4.25rem);
   font-weight: 400;
 
-  line-height: 0.97;
-  letter-spacing: -0.055em;
+  line-height: 0.98;
+  letter-spacing: -0.045em;
 }
 
-.project-page-description {
-  max-width: 700px;
+.project-demo-heading > p:last-child {
+  max-width: 650px;
 
-  margin-bottom: 30px;
+  margin: 0;
 
   color: #514d47;
 
-  font-size: 1.1rem;
-  line-height: 1.65;
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
-/* ---------- Project skills ---------- */
+.project-demo-container {
+  width: 100%;
 
-.project-skills {
-  margin: 20px 0;
+  overflow: hidden;
 
-  display: flex;
-  flex-wrap: wrap;
+  border: 1px solid #c8c4ba;
 
-  gap: 8px;
+  background: #ffffff;
 }
 
-.project-skills span {
-  padding: 6px 10px;
+/* =========================================================
+   PROJECT VISUALS
+   ========================================================= */
 
-  border: 1px solid #aaa59b;
-
-  font-size: 0.67rem;
-
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-/* ---------- Tiny Bus case study ---------- */
+/* ---------- Tiny Bus ---------- */
 
 .project-case-study-visual {
   margin-bottom: 90px;
@@ -888,26 +991,11 @@ img {
   object-fit: contain;
 }
 
-.project-image-caption {
-  max-width: 750px;
-
-  margin: 16px 0 0;
-
-  color: #66625c;
-
-  font-size: 0.72rem;
-  line-height: 1.6;
-
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
 .project-detail-visual {
-  padding-top: 60px;
-  padding-bottom: 60px;
+  padding: 60px 0;
 }
 
-/* ---------- Fitness Tracker main screenshot ---------- */
+/* ---------- Workout Tracker main screen ---------- */
 
 .project-mobile-showcase {
   margin-bottom: 90px;
@@ -929,11 +1017,9 @@ img {
 .project-phone-preview img {
   width: 100%;
   height: auto;
-
-  display: block;
 }
 
-/* ---------- Fitness Tracker history ---------- */
+/* ---------- Workout Tracker history ---------- */
 
 .project-fitness-history {
   padding: 60px 0;
@@ -951,42 +1037,96 @@ img {
 .project-history-preview img {
   width: 100%;
   height: auto;
-
-  display: block;
 }
 
-/* ---------- Project written details ---------- */
+/* ---------- Image captions ---------- */
+
+.project-image-caption {
+  max-width: 750px;
+
+  margin: 16px 0 0;
+
+  color: #66625c;
+
+  font-size: 0.72rem;
+  line-height: 1.6;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* =========================================================
+   PROJECT DETAILS
+   ========================================================= */
 
 .project-details {
   padding: 0;
 }
 
 .project-details > div {
-  padding: 48px 0;
-
   border-top: 1px solid #c8c4ba;
 }
 
-.project-details h2 {
-  margin: 0 0 18px;
+.project-detail-text {
+  padding: 55px 0;
 
-  font-family: Georgia, "Times New Roman", serif;
+  display: grid;
 
-  font-size: 1.7rem;
-  font-weight: 400;
+  grid-template-columns:
+    minmax(150px, 0.45fr)
+    minmax(0, 1.55fr);
 
-  letter-spacing: -0.02em;
+  gap: clamp(40px, 8vw, 120px);
 }
 
-.project-details p {
-  max-width: 750px;
+.project-detail-text h2 {
+  margin: 0;
+
+  color: #66625c;
+
+  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 0.67rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.project-detail-text p {
+  max-width: 760px;
 
   margin: 0;
 
-  color: #514d47;
+  color: #36332f;
 
-  font-size: 1rem;
-  line-height: 1.7;
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  line-height: 1.55;
+}
+
+/* =========================================================
+   SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .navbar {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .nav-links a {
+    font-size: 0.68rem;
+  }
+
+  .nav-name {
+    font-size: 0.76rem;
+  }
 }
 
 /* =========================================================
@@ -994,8 +1134,14 @@ img {
    ========================================================= */
 
 @media (max-width: 900px) {
+  /* Navigation */
+
   .nav-links {
-    gap: 18px;
+    gap: 14px;
+  }
+
+  .nav-links a {
+    font-size: 0.64rem;
   }
 
   /* Hero */
@@ -1026,6 +1172,12 @@ img {
     gap: 60px 24px;
   }
 
+  .project-card h2,
+  .project-card-description,
+  .project-card-skills {
+    min-height: 0;
+  }
+
   /* About */
 
   .about-editorial {
@@ -1047,7 +1199,24 @@ img {
     gap: 30px 20px;
   }
 
-  /* Project pages */
+  /* Project page */
+
+  .project-page {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
+  .project-header h1 {
+    font-size: clamp(3.7rem, 9vw, 6rem);
+  }
+
+  .project-detail-text {
+    grid-template-columns:
+      minmax(120px, 0.35fr)
+      minmax(0, 1.65fr);
+
+    gap: 50px;
+  }
 
   .project-case-study-image {
     padding: 30px;
@@ -1176,9 +1345,17 @@ img {
     aspect-ratio: 16 / 10;
   }
 
-  .project-card-image img[src*="tiny-bus-preview"],
-  .project-card-image img[src*="fitness-tracker-preview"] {
+  .project-card-image-dijkstra,
+  .project-card-image-eigenvalue-visualizer {
+    padding: 12px;
+  }
+
+  .project-card-image-technical-writing {
     padding: 20px;
+  }
+
+  .project-card-image-fitness-tracker {
+    padding: 16px 70px;
   }
 
   .project-card-category {
@@ -1186,13 +1363,20 @@ img {
   }
 
   .project-card h2 {
+    min-height: 0;
+
     font-size: 2rem;
   }
 
   .project-card-description {
+    min-height: 0;
     max-width: 550px;
 
     font-size: 0.88rem;
+  }
+
+  .project-card-skills {
+    min-height: 0;
   }
 
   /* About */
@@ -1269,12 +1453,65 @@ img {
   }
 
   .project-header {
-    margin-bottom: 60px;
+    margin-bottom: 65px;
+  }
+
+  .project-header-meta {
+    gap: 20px;
+
+    align-items: flex-start;
+
+    font-size: 0.57rem;
+  }
+
+  .project-header-meta span:last-child {
+    text-align: right;
+  }
+
+  .project-header h1 {
+    margin-top: 35px;
+
+    font-size: clamp(3.4rem, 15vw, 5.5rem);
+  }
+
+  .project-page-description {
+    font-size: 1.2rem;
   }
 
   .project-links {
     gap: 16px;
   }
+
+  /* Project details */
+
+  .project-detail-text {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+
+    padding: 40px 0;
+  }
+
+  .project-detail-text p {
+    font-size: 1.2rem;
+  }
+
+  /* Project demos */
+
+  .project-live-demo {
+    margin-bottom: 70px;
+    padding: 40px 0 55px;
+  }
+
+  .project-demo-heading {
+    margin-bottom: 30px;
+  }
+
+  .project-demo-heading h2 {
+    font-size: 2.5rem;
+  }
+
+  /* Tiny Bus */
 
   .project-case-study-visual {
     margin-bottom: 60px;
@@ -1284,6 +1521,8 @@ img {
   .project-case-study-image {
     padding: 18px;
   }
+
+  /* Workout Tracker */
 
   .project-mobile-showcase {
     margin-bottom: 60px;

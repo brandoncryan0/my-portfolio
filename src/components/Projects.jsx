@@ -14,7 +14,7 @@ function Projects() {
         {projects.map((project, index) => (
           <article className="project-card" key={project.id}>
             <Link
-              className="project-card-image"
+              className={`project-card-image project-card-image-${project.id}`}
               to={`/projects/${project.id}`}
               aria-label={`View ${project.title}`}
             >
@@ -25,6 +25,11 @@ function Projects() {
                   {String(index + 1).padStart(2, "0")}
                 </div>
               )}
+
+              <span className="project-card-overlay">
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <span>↗</span>
+              </span>
             </Link>
 
             <div className="project-card-content">

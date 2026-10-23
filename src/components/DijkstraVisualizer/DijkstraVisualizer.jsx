@@ -13,7 +13,7 @@ export default function DijkstraVisualizer() {
   }, []);
   const [algorithm, setAlgorithm] = useState("dijkstra");
   const isMaze = algorithm === "prim";
-  const algorithmName = isMaze ? "Prim?s Maze" : algorithm === "astar" ? "A*" : "Dijkstra";
+  const algorithmName = isMaze ? "Prim's Maze" : algorithm === "astar" ? "A*" : "Dijkstra";
   const [status, setStatus] = useState("Ready to explore.");
   const [grid, setGrid] = useState(createGrid);
 
@@ -210,7 +210,7 @@ export default function DijkstraVisualizer() {
 
           <p className="dijkstra-description">
             {isMaze
-              ? "Randomized Prim?s grows a spanning tree to generate a maze. It replaces the current board, including weights."
+              ? "Randomized Prim's grows a spanning tree to generate a maze. It replaces the current board, including weights."
               : algorithm === "astar"
                 ? "A* combines travel cost with Manhattan distance to guide its shortest-path search toward the target."
                 : "Dijkstra explores nodes in increasing travel cost to find the shortest path."}
@@ -235,7 +235,7 @@ export default function DijkstraVisualizer() {
           }}>
             <option value="dijkstra">Dijkstra</option>
             <option value="astar">A* (A-star)</option>
-            <option value="prim">Prim?s (maze generator)</option>
+            <option value="prim">Prim's (maze generator)</option>
           </select>
         </label>
         <span>Terrain:</span>

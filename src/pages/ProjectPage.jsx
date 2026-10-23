@@ -12,12 +12,17 @@ const EigenvalueVisualizer = lazy(
 function ProjectPage() {
   const { projectId } = useParams();
 
-  const project = projects.find((project) => project.id === projectId);
+  const projectIndex = projects.findIndex(
+    (project) => project.id === projectId,
+  );
+
+  const project = projects[projectIndex];
 
   if (!project) {
     return (
       <main className="project-page">
         <h1>Project not found</h1>
+
         <a href="/">Return Home</a>
       </main>
     );
@@ -30,7 +35,14 @@ function ProjectPage() {
       </a>
 
       <header className="project-header">
-        <p className="section-label">{project.category}</p>
+        <div className="project-header-meta">
+          <span>
+            {String(projectIndex + 1).padStart(2, "0")} /{" "}
+            {String(projects.length).padStart(2, "0")}
+          </span>
+
+          <span>{project.category}</span>
+        </div>
 
         <h1>{project.title}</h1>
 
@@ -165,7 +177,7 @@ function ProjectPage() {
 
       <section className="project-details">
         {project.overview && (
-          <div>
+          <div className="project-detail-text">
             <h2>Overview</h2>
 
             <p>{project.overview}</p>
@@ -173,7 +185,7 @@ function ProjectPage() {
         )}
 
         {project.problem && (
-          <div>
+          <div className="project-detail-text">
             <h2>The Problem</h2>
 
             <p>{project.problem}</p>
@@ -181,7 +193,7 @@ function ProjectPage() {
         )}
 
         {project.approach && (
-          <div>
+          <div className="project-detail-text">
             <h2>My Approach</h2>
 
             <p>{project.approach}</p>
@@ -234,7 +246,7 @@ function ProjectPage() {
         )}
 
         {project.result && (
-          <div>
+          <div className="project-detail-text">
             <h2>Result</h2>
 
             <p>{project.result}</p>
