@@ -8,7 +8,11 @@ function Navbar() {
       <div className="nav-links">
         <a href="/#projects">Work</a>
         <a href="/#about">About</a>
-        <a href="/resume.pdf">Resume</a>
+        <a href="/#contact">Contact</a>
+
+        <a href="/resume.pdf" target="_blank" rel="noreferrer">
+          Résumé
+        </a>
 
         <a
           href="https://github.com/brandoncryan0"

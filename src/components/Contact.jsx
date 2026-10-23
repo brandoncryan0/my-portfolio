@@ -4,10 +4,15 @@ function Contact() {
       <p className="contact-label">LET'S CONNECT</p>
 
       <h2>
-        Interested in working
+        Have a problem
         <br />
-        together?
+        worth solving?
       </h2>
+
+      <p className="contact-description">
+        I'm interested in opportunities where analytical thinking, software, and
+        clear technical communication come together.
+      </p>
 
       <div className="contact-links">
         <a href="mailto:brandon.cryan0@gmail.com">Email ↗</a>
@@ -20,7 +25,9 @@ function Contact() {
           GitHub ↗
         </a>
 
-        <a href="/resume.pdf">Résumé ↗</a>
+        <a href="/resume.pdf" target="_blank" rel="noreferrer">
+          Résumé ↗
+        </a>
       </div>
 
       <footer>

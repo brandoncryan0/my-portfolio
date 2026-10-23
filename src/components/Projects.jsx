@@ -10,47 +10,47 @@ function Projects() {
         <span>{String(projects.length).padStart(2, "0")} PROJECTS</span>
       </div>
 
-      <div className="work-list">
+      <div className="project-card-grid">
         {projects.map((project, index) => (
-          <article
-            className={`work-item ${
-              index % 2 === 1 ? "work-item-reverse" : ""
-            }`}
-            key={project.id}
-          >
-            <Link className="work-visual" to={`/projects/${project.id}`}>
+          <article className="project-card" key={project.id}>
+            <Link
+              className="project-card-image"
+              to={`/projects/${project.id}`}
+              aria-label={`View ${project.title}`}
+            >
               {project.image ? (
                 <img src={project.image} alt={`${project.title} preview`} />
               ) : (
-                <div className="work-placeholder">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-
-                  <span className="placeholder-symbol">
-                    {index === 0 ? "V → E" : index === 1 ? "Av = λv" : "Aa"}
-                  </span>
+                <div className="project-card-placeholder">
+                  {String(index + 1).padStart(2, "0")}
                 </div>
               )}
-
-              <span className="work-visual-label">View project ↗</span>
             </Link>
 
-            <div className="work-info">
-              <p className="work-number">
-                {String(index + 1).padStart(2, "0")} / {project.category}
+            <div className="project-card-content">
+              <p className="project-card-number">
+                {String(index + 1).padStart(2, "0")}
               </p>
 
-              <h2>{project.title}</h2>
+              <p className="project-card-category">{project.category}</p>
 
-              <p className="work-description">{project.description}</p>
+              <h2>
+                <Link to={`/projects/${project.id}`}>{project.title}</Link>
+              </h2>
 
-              <div className="work-skills">
-                {project.skills.map((skill) => (
+              <p className="project-card-description">{project.description}</p>
+
+              <div className="project-card-skills">
+                {project.skills.slice(0, 3).map((skill) => (
                   <span key={skill}>{skill}</span>
                 ))}
               </div>
 
-              <Link className="work-link" to={`/projects/${project.id}`}>
-                Explore project →
+              <Link
+                className="project-card-link"
+                to={`/projects/${project.id}`}
+              >
+                View project ↗
               </Link>
             </div>
           </article>

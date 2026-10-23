@@ -3,29 +3,38 @@ function Hero() {
     <section className="hero">
       <div className="hero-topline">
         <span>PORTFOLIO / 2026</span>
-        <span>MATHEMATICS + TECHNOLOGY</span>
+        <span className="hero-topline-rule" />
       </div>
 
-      <div className="hero-content">
-        <p className="hero-name">Brandon Cryan</p>
+      <div className="hero-main">
+        <div className="hero-primary">
+          <h1>Brandon Cryan</h1>
 
-        <h1>
-          Mathematics, software,
-          <br />
-          and technical communication.
-        </h1>
-
-        <div className="hero-lower">
-          <p className="hero-description">
-            I build tools, visualizations, and technical content that make
-            complex problems easier to understand.
+          <p className="hero-disciplines">
+            MATHEMATICS / SOFTWARE / COMMUNICATION
           </p>
 
-          <div className="hero-actions">
-            <a href="#projects">View selected work ↘</a>
-            <a href="/resume.pdf">View résumé ↗</a>
-          </div>
+          <p className="hero-description">
+            Projects combining mathematics, software development, visualization,
+            and technical communication.
+          </p>
         </div>
+
+        <div className="hero-focus">
+          <span>Algorithms</span>
+          <span>Visualization</span>
+          <span>Mobile Development</span>
+          <span>Technical Documentation</span>
+          <span>Problem Solving</span>
+        </div>
+      </div>
+
+      <div className="hero-actions">
+        <a href="#projects">View selected work ↘</a>
+
+        <a href="/resume.pdf" target="_blank" rel="noreferrer">
+          View résumé ↗
+        </a>
       </div>
     </section>
   );
