@@ -64,6 +64,24 @@ function ProjectPage() {
         )}
       </header>
 
+      {project.id === "technical-writing" && project.image && (
+        <section className="project-case-study-visual">
+          <p className="section-label">SCHEMATIC RECONSTRUCTION</p>
+
+          <div className="project-case-study-image">
+            <img
+              src={project.image}
+              alt="Reconstructed Tiny Bus interior space plan"
+            />
+          </div>
+
+          <p className="project-image-caption">
+            Retrospective interior layout reconstruction. The diagram is
+            schematic and not to scale.
+          </p>
+        </section>
+      )}
+
       {project.id === "dijkstra" && (
         <section className="project-live-demo">
           <div className="project-demo-heading">
@@ -125,6 +143,24 @@ function ProjectPage() {
           <div>
             <h2>My Approach</h2>
             <p>{project.approach}</p>
+          </div>
+        )}
+
+        {project.id === "technical-writing" && project.detailImage && (
+          <div className="project-detail-visual">
+            <p className="section-label">COMPONENT DOCUMENTATION</p>
+
+            <div className="project-case-study-image">
+              <img
+                src={project.detailImage}
+                alt="Tiny Bus interior component callout diagram"
+              />
+            </div>
+
+            <p className="project-image-caption">
+              Reconstructed component diagram identifying the major interior
+              features and circulation path.
+            </p>
           </div>
         )}
 

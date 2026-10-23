@@ -63,6 +63,8 @@ const projects = [
 
     image: "/images/projects/tiny-bus-preview.svg",
 
+    detailImage: "/images/projects/tiny-bus-components.svg",
+
     overview:
       "I reconstructed documentation for a previous Tiny Bus conversion project in which an existing bus interior was adapted into a tiny-home-style living space. The documentation covers space planning, interior construction, storage, materials, and the overall conversion process.",
 
@@ -81,24 +83,6 @@ const projects = [
       "https://brandoncryan0.github.io/tiny-bus-documentation/tiny-bus-conversion.pdf",
 
     githubUrl: "https://github.com/brandoncryan0/tiny-bus-documentation",
-  },
-
-  {
-    id: "programming-project",
-    title: "Programming Project",
-    category: "PROGRAMMING",
-    description:
-      "A software project demonstrating programming, debugging, and problem-solving skills.",
-    skills: ["JavaScript", "Programming", "Problem Solving"],
-  },
-
-  {
-    id: "mathematics-project",
-    title: "Mathematics Project",
-    category: "MATHEMATICS",
-    description:
-      "A mathematics project demonstrating rigorous reasoning, mathematical communication, and analytical problem solving.",
-    skills: ["Mathematics", "Analysis", "LaTeX"],
   },
 ];
 

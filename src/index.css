@@ -293,6 +293,7 @@ img {
 .work-visual img[src*="tiny-bus-preview"] {
   object-fit: contain;
   padding: 40px;
+
   background: #171717;
 }
 
@@ -671,6 +672,7 @@ img {
 .project-links {
   display: flex;
   flex-wrap: wrap;
+
   gap: 24px;
 
   margin-top: 32px;
@@ -755,7 +757,7 @@ img {
   line-height: 1.65;
 }
 
-/* This class is also used on the project page */
+/* ---------- Project skills ---------- */
 
 .project-skills {
   display: flex;
@@ -776,6 +778,48 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
+
+/* ---------- Technical writing case-study visual ---------- */
+
+.project-case-study-visual {
+  margin-bottom: 90px;
+  padding: 40px 0 60px;
+
+  border-top: 1px solid #c8c4ba;
+  border-bottom: 1px solid #c8c4ba;
+}
+
+.project-case-study-image {
+  margin-top: 25px;
+  padding: 45px;
+
+  overflow: hidden;
+
+  background: #171717;
+}
+
+.project-case-study-image img {
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.project-image-caption {
+  max-width: 750px;
+
+  margin: 16px 0 0;
+
+  color: #66625c;
+
+  font-size: 0.72rem;
+  line-height: 1.6;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ---------- Project written details ---------- */
 
 .project-details {
   padding: 0;
@@ -853,6 +897,10 @@ img {
 
   .about-disciplines {
     grid-column: 2;
+  }
+
+  .project-case-study-image {
+    padding: 30px;
   }
 }
 
@@ -932,6 +980,10 @@ img {
     min-height: 285px;
   }
 
+  .work-visual img[src*="tiny-bus-preview"] {
+    padding: 18px;
+  }
+
   .work-placeholder {
     padding: 20px;
   }
@@ -998,5 +1050,27 @@ img {
 
   .project-header {
     margin-bottom: 60px;
+  }
+
+  .project-links {
+    gap: 16px;
+  }
+
+  .project-case-study-visual {
+    margin-bottom: 60px;
+    padding: 30px 0 40px;
+  }
+
+  .project-case-study-image {
+    padding: 18px;
+  }
+
+  .project-image-caption {
+    font-size: 0.65rem;
+  }
+
+  .project-detail-visual {
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 }
