@@ -45,11 +45,39 @@ const projects = [
   },
   {
     id: "technical-writing",
-    title: "Technical Communication Project",
-    category: "TECHNICAL COMMUNICATION",
+
+    title: "Tiny Bus Conversion Documentation",
+
+    category: "TECHNICAL COMMUNICATION / STRUCTURED AUTHORING",
+
     description:
-      "A technical communication project focused on transforming complex information into clear, audience-centered content.",
-    skills: ["Technical Writing", "Research", "Information Design"],
+      "A reconstructed technical documentation set for converting an existing bus interior into a compact living space, authored in DITA XML and published as HTML5 and PDF.",
+
+    skills: [
+      "DITA XML",
+      "DITA-OT",
+      "Technical Writing",
+      "Information Architecture",
+      "Technical Illustration",
+    ],
+
+    image: "/images/projects/tiny-bus-preview.svg",
+
+    overview:
+      "I reconstructed documentation for a previous Tiny Bus conversion project in which an existing bus interior was adapted into a tiny-home-style living space. The documentation covers space planning, interior construction, storage, materials, and the overall conversion process.",
+
+    problem:
+      "The original project documentation was no longer available. Rather than inventing exact engineering specifications, I needed to reconstruct the project from known information while clearly distinguishing verified details from retrospective interpretation.",
+
+    approach:
+      "I organized the content into reusable DITA concept, task, and reference topics, created schematic SVG diagrams for the interior layout and major components, and built separate DITA maps for web and PDF publication. DITA Open Toolkit provides the single-source publishing pipeline, while GitHub Actions automatically builds and deploys the HTML documentation.",
+
+    result:
+      "The finished project is a version-controlled structured documentation system that publishes responsive HTML5 documentation through GitHub Pages and a PDF technical manual from the same DITA source.",
+
+    liveUrl: "https://brandoncryan0.github.io/tiny-bus-documentation/",
+
+    githubUrl: "https://github.com/brandoncryan0/tiny-bus-documentation",
   },
 
   {

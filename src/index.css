@@ -290,6 +290,12 @@ img {
     filter 0.5s ease;
 }
 
+.work-visual img[src*="tiny-bus-preview"] {
+  object-fit: contain;
+  padding: 40px;
+  background: #171717;
+}
+
 .work-visual:hover img {
   transform: scale(1.02);
 }
@@ -660,6 +666,34 @@ img {
 
   margin: 0 auto;
   padding: 60px 8% 120px;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+
+  margin-top: 32px;
+}
+
+.project-links a {
+  display: inline-block;
+
+  padding-bottom: 3px;
+
+  border-bottom: 1px solid #171717;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+  transition: opacity 0.2s ease;
+}
+
+.project-links a:hover {
+  opacity: 0.5;
 }
 
 .back-link {
