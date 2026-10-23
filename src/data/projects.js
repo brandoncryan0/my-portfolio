@@ -77,6 +77,9 @@ const projects = [
 
     liveUrl: "https://brandoncryan0.github.io/tiny-bus-documentation/",
 
+    pdfUrl:
+      "https://brandoncryan0.github.io/tiny-bus-documentation/tiny-bus-conversion.pdf",
+
     githubUrl: "https://github.com/brandoncryan0/tiny-bus-documentation",
   },
 

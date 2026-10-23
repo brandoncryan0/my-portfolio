@@ -41,11 +41,17 @@ function ProjectPage() {
             <span key={skill}>{skill}</span>
           ))}
         </div>
-        {(project.liveUrl || project.githubUrl) && (
+        {(project.liveUrl || project.pdfUrl || project.githubUrl) && (
           <div className="project-links">
             {project.liveUrl && (
               <a href={project.liveUrl} target="_blank" rel="noreferrer">
                 View Documentation ↗
+              </a>
+            )}
+
+            {project.pdfUrl && (
+              <a href={project.pdfUrl} target="_blank" rel="noreferrer">
+                View PDF ↗
               </a>
             )}
 
