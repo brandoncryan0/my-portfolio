@@ -3,7 +3,9 @@ import { Link, useParams } from "react-router-dom";
 
 import projects from "../data/projects";
 
-import DijkstraVisualizer from "../components/DijkstraVisualizer/DijkstraVisualizer";
+const DijkstraVisualizer = lazy(
+  () => import("../components/DijkstraVisualizer/DijkstraVisualizer"),
+);
 
 const EigenvalueVisualizer = lazy(
   () => import("../components/EigenvalueVisualizer/EigenvalueVisualizer"),
@@ -161,7 +163,11 @@ function ProjectPage() {
           </div>
 
           <div className="project-demo-container">
-            <DijkstraVisualizer />
+            <Suspense
+              fallback={<p role="status">Loading pathfinding visualizer...</p>}
+            >
+              <DijkstraVisualizer />
+            </Suspense>
           </div>
         </section>
       )}
