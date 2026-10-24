@@ -1,16 +1,42 @@
-# React + Vite
+# Brandon Cryan — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio showcasing work across mathematics, software development, interactive visualization, and technical communication.
 
-Currently, two official plugins are available:
+## Featured Work
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Pathfinding & Maze Visualizer
 
-## React Compiler
+Interactive React visualization for comparing Dijkstra and A\* pathfinding across weighted terrain, obstacles, and procedurally generated mazes.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Eigenvalue & Eigenvector Visualizer
 
-## Expanding the ESLint configuration
+Interactive linear algebra tool for exploring matrix transformations, eigenvalues, eigenvectors, and preserved directions in the plane.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Tiny Bus Conversion Documentation
+
+Structured technical documentation created with DITA XML and DITA Open Toolkit, published as responsive HTML5 and PDF from a shared source.
+
+### Workout Tracker
+
+Local-first mobile workout logging application built with React and packaged for Android using Capacitor.
+
+## Technologies
+
+- React
+- JavaScript
+- HTML / CSS
+- React Router
+- SVG
+- KaTeX
+- DITA XML / DITA-OT
+- Capacitor / Android
+- Git / GitHub
+- Vite
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
