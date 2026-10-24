@@ -1,7 +1,8 @@
 {
-  "name": "my-portfolio",
+  "name": "brandon-cryan-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Personal portfolio showcasing mathematics, software development, visualization, and technical communication.",
   "type": "module",
   "scripts": {
     "dev": "vite",
