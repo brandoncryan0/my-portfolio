@@ -21,6 +21,12 @@ function ProjectPage() {
   useEffect(() => {
     if (project) {
       document.title = `${project.title} | Brandon Cryan`;
+
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "auto",
+      });
     }
 
     return () => {
