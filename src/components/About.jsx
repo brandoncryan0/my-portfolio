@@ -11,32 +11,31 @@ function About() {
           <p className="about-number">01 / ABOUT</p>
 
           <h2>
-            Technical depth,
+            Math, software,
             <br />
-            clear communication.
+            and clear explanations.
           </h2>
         </div>
 
         <div className="about-body">
           <p className="about-lead">
-            I work at the intersection of mathematics, software, and technical
-            communication.
+            I have a background in mathematics and enjoy building things that
+            help make difficult ideas easier to understand.
           </p>
 
           <div className="about-copy">
             <p>
-              My background in mathematics gives me a strong foundation in
-              analytical reasoning and structured problem solving. I use that
-              foundation to build software, interactive visualizations, and
-              technical documentation.
+              Most of my work falls somewhere between programming, mathematics,
+              and technical writing. I have built interactive tools for
+              pathfinding and linear algebra, a workout tracking app, and
+              structured technical documentation.
             </p>
 
             <p>
-              I am particularly interested in projects where complex information
-              needs to become understandable and useful—whether that means
-              visualizing an algorithm, developing a focused mobile application,
-              explaining a mathematical concept, or designing structured
-              technical content.
+              I like figuring out how something works, breaking it into smaller
+              pieces, and finding a clear way to present it. Sometimes that
+              means writing code, sometimes it means creating a diagram or
+              documentation, and sometimes it means doing a little of both.
             </p>
           </div>
         </div>
