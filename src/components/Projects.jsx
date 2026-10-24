@@ -19,7 +19,12 @@ function Projects() {
               aria-label={`View ${project.title}`}
             >
               {project.image ? (
-                <img src={project.image} alt={`${project.title} preview`} />
+                <img
+                  src={project.image}
+                  alt={`${project.title} preview`}
+                  loading="lazy"
+                  decoding="async"
+                />
               ) : (
                 <div className="project-card-placeholder">
                   {String(index + 1).padStart(2, "0")}
