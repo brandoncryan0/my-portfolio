@@ -110,9 +110,9 @@ const projects = [
 
     skills: ["React", "JavaScript", "Local Storage", "Capacitor", "Android"],
 
-    image: "/images/projects/fitness-tracker-preview.png",
+    image: "/images/projects/fitness-tracker-preview.webp",
 
-    historyImage: "/images/projects/fitness-tracker-history.png",
+    historyImage: "/images/projects/fitness-tracker-history.webp",
 
     overview:
       "A lightweight workout tracker built around a simple lifting workflow. Users choose a workout, enter weights for each exercise, save the session, and automatically see their previous weights the next time they perform that workout.",
