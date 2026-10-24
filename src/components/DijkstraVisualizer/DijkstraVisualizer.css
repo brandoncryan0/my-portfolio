@@ -1,91 +1,321 @@
 .dijkstra-project {
   max-width: 1100px;
+
   margin: 0 auto 60px;
   padding: 24px;
+
   border: 1px solid #e1e1e1;
   border-radius: 8px;
-  background: #fff;
+
+  background: #ffffff;
   color: #202124;
 }
 
+/* =========================================================
+   HEADER
+   ========================================================= */
+
 .dijkstra-header {
   display: flex;
-  justify-content: space-between;
-  gap: 30px;
   align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
   margin-bottom: 24px;
 }
 
 .dijkstra-project .section-label {
   font-size: 0.75rem;
+
   letter-spacing: 0.15em;
+
   color: #315b7d;
 }
 
 .dijkstra-header h2 {
   margin: 5px 0;
+
   font-size: 2rem;
 }
 
 .dijkstra-description {
-  color: #555;
   max-width: 600px;
+
+  color: #555555;
 }
 
+/* =========================================================
+   RUN BUTTON
+   ========================================================= */
+
 .run-button {
+  flex-shrink: 0;
+
   padding: 12px 20px;
-  border: none;
+
+  border: 1px solid #171717;
   border-radius: 8px;
+
+  background: #171717;
+  color: #f1efe9;
+
   cursor: pointer;
+
   font-weight: 600;
 }
+
+.run-button:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.run-button:disabled {
+  border-color: #d8d4ca;
+
+  background: #d8d4ca;
+  color: #514d47;
+
+  opacity: 1;
+
+  cursor: default;
+}
+
+/* =========================================================
+   ALGORITHM / MAZE CONTROL GROUPS
+   ========================================================= */
+
+.dijkstra-control-groups {
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  gap: 24px;
+
+  margin-bottom: 18px;
+  padding: 18px;
+
+  border: 1px solid #d5d1c8;
+
+  background: #f7f6f2;
+}
+
+.dijkstra-control-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.control-group-label {
+  margin: 0;
+
+  color: #77736c;
+
+  font-size: 0.6rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+/* =========================================================
+   ALGORITHM SELECT
+   ========================================================= */
 
 .dijkstra-controls {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+
   gap: 8px;
+
+  margin: 0;
+}
+
+.algorithm-select {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.algorithm-select select {
+  max-width: 100%;
+  min-height: 44px;
+
+  padding: 8px;
+
+  border: 1px solid #315b7d;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #202124;
+
+  font-family: inherit;
+}
+
+/* =========================================================
+   MAZE GENERATOR
+   ========================================================= */
+
+.maze-control-group {
+  padding-left: 24px;
+
+  border-left: 1px solid #d5d1c8;
+}
+
+.maze-button {
+  min-height: 44px;
+
+  padding: 8px 15px;
+
+  border: 1px solid #171717;
+  border-radius: 6px;
+
+  background: #171717;
+  color: #f1efe9;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-weight: 600;
+}
+
+.maze-button:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.maze-button:disabled {
+  border-color: #d8d4ca;
+
+  background: #d8d4ca;
+  color: #514d47;
+
+  opacity: 1;
+
+  cursor: default;
+}
+
+/* =========================================================
+   TERRAIN CONTROLS
+   ========================================================= */
+
+.terrain-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
   margin-bottom: 20px;
 }
 
-.dijkstra-controls button {
-  border: 1px solid #315b7d;
-  background: #fff;
-  color: #202124;
-  border-radius: 6px;
-  padding: 7px 12px;
-  cursor: pointer;
+.terrain-label {
+  margin-right: 3px;
+
+  font-weight: 500;
 }
 
-.dijkstra-controls button.active {
-  border-color: #202124;
-  background: #dce8f0;
+.terrain-controls button {
+  min-height: 44px;
+
+  padding: 7px 12px;
+
+  border: 1px solid #315b7d;
+  border-radius: 6px;
+
+  background: #ffffff;
+  color: #202124;
+
+  cursor: pointer;
+
+  font-family: inherit;
+}
+
+.terrain-controls button:hover:not(:disabled):not(.active) {
+  background: #f3f2ee;
+}
+
+.terrain-controls button.active {
+  border-color: #171717;
+
+  background: #171717;
+  color: #f1efe9;
+}
+
+.terrain-controls button:disabled {
+  opacity: 0.6;
+
+  cursor: default;
+}
+
+.terrain-divider {
+  width: 1px;
+  height: 28px;
+
+  margin: 0 4px;
+
+  background: #c8c4ba;
+}
+
+/* =========================================================
+   BOARD
+   ========================================================= */
+
+.dijkstra-board {
+  overflow-x: auto;
+
+  padding: 3px;
 }
 
 .dijkstra-grid {
   display: grid;
   grid-template-columns: repeat(20, 1fr);
-  border: 1px solid #b9c4cc;
+
   width: 100%;
+  min-width: 560px;
+
   aspect-ratio: 20 / 12;
+
+  border: 1px solid #b9c4cc;
 }
 
 .dijkstra-cell {
-  border: 1px solid #d6dee4;
-  background: #fff;
-  color: #202124;
+  min-width: 0;
+  min-height: 28px;
+
   padding: 0;
+
+  border: 1px solid #d6dee4;
+
+  background: #ffffff;
+  color: #202124;
+
   cursor: pointer;
+
+  font-family: inherit;
   font-size: 0.7rem;
+
   transition:
     background 0.15s ease,
     transform 0.1s ease;
 }
 
-.dijkstra-cell:hover {
-  transform: scale(1.08);
+.dijkstra-cell:hover:not(:disabled) {
+  position: relative;
+
   z-index: 1;
+
+  transform: scale(1.08);
 }
+
+.dijkstra-cell:disabled {
+  cursor: default;
+}
+
+/* =========================================================
+   CELL STATES
+   ========================================================= */
 
 .dijkstra-cell.wall {
   background: #202124;
@@ -97,67 +327,97 @@
 
 .dijkstra-cell.visited {
   background: #a8cadf;
+
+  animation: dijkstra-reveal 0.2s ease-out;
 }
 
 .dijkstra-cell.path {
   background: #dbc342;
-  color: #111;
+  color: #111111;
+
+  animation: dijkstra-reveal 0.25s ease-out;
 }
 
 .dijkstra-cell.start {
   background: #388e3c;
+  color: #ffffff;
+
   font-weight: bold;
 }
 
 .dijkstra-cell.end {
   background: #c43d3d;
+  color: #ffffff;
+
   font-weight: bold;
 }
+
+/* =========================================================
+   STATS
+   ========================================================= */
 
 .dijkstra-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+
   gap: 12px;
+
   margin-top: 22px;
 }
 
 .dijkstra-stats div {
-  background: #f7f7f5;
   padding: 14px;
-  border-radius: 8px;
+
   display: flex;
   flex-direction: column;
+
+  border-radius: 8px;
+
+  background: #f7f7f5;
 }
 
 .dijkstra-stats span {
-  color: #555;
+  color: #555555;
+
   font-size: 0.75rem;
 }
 
 .dijkstra-stats strong {
   margin-top: 4px;
+
   font-size: 1.1rem;
 }
+
+/* =========================================================
+   LEGEND
+   ========================================================= */
 
 .dijkstra-legend {
   display: flex;
   flex-wrap: wrap;
+
   gap: 18px;
+
   margin-top: 20px;
-  color: #555;
+
+  color: #555555;
+
   font-size: 0.8rem;
 }
 
 .dijkstra-legend span {
   display: flex;
   align-items: center;
+
   gap: 6px;
 }
 
 .dijkstra-legend i {
   width: 12px;
   height: 12px;
+
   display: inline-block;
+
   border-radius: 2px;
 }
 
@@ -170,8 +430,9 @@
 }
 
 .legend-wall {
+  border: 1px solid #555555;
+
   background: #202124;
-  border: 1px solid #555;
 }
 
 .legend-weight {
@@ -186,49 +447,119 @@
   background: #dbc342;
 }
 
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.dijkstra-project button,
+.dijkstra-project select {
+  font-family: inherit;
+}
+
+.dijkstra-project button:disabled {
+  cursor: default;
+}
+
+.dijkstra-project :focus-visible {
+  position: relative;
+
+  z-index: 2;
+
+  outline: 3px solid #315b7d;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+@keyframes dijkstra-reveal {
+  from {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dijkstra-cell {
+    animation: none;
+
+    transition: none;
+  }
+
+  .dijkstra-cell:hover {
+    transform: none;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 700px) {
   .dijkstra-project {
-    padding: 18px;
+    padding: 12px;
   }
 
   .dijkstra-header {
     flex-direction: column;
     align-items: flex-start;
+
+    gap: 18px;
+  }
+
+  .dijkstra-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .run-button {
+    width: 100%;
+  }
+
+  .dijkstra-control-groups {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .maze-control-group {
+    padding-top: 18px;
+    padding-left: 0;
+
+    border-top: 1px solid #d5d1c8;
+    border-left: 0;
+  }
+
+  .maze-button {
+    width: 100%;
+  }
+
+  .terrain-divider {
+    display: none;
+  }
+
+  .terrain-controls {
+    align-items: stretch;
+  }
+
+  .terrain-controls button {
+    flex: 1 1 auto;
   }
 
   .dijkstra-stats {
     grid-template-columns: repeat(2, 1fr);
+
+    gap: 8px;
+  }
+
+  .dijkstra-stats div {
+    padding: 10px;
   }
 
   .dijkstra-cell {
     font-size: 0.75rem;
   }
 }
-
-/* Keep terrain controls consistent with the portfolio's button palette. */
-.dijkstra-project button, .dijkstra-project select { font-family: inherit; }
-.dijkstra-project .run-button { color: #fff; flex-shrink: 0; }
-.dijkstra-project button:disabled { cursor: default; }
-.dijkstra-controls button:disabled, .run-button:disabled { opacity: 0.6; }
-.dijkstra-project :focus-visible { outline: 3px solid #315b7d; outline-offset: 2px; z-index: 2; }
-.dijkstra-board { overflow-x: auto; padding: 3px; }
-.dijkstra-grid { min-width: 560px; }
-.dijkstra-cell { min-width: 0; min-height: 28px; }
-.dijkstra-cell.start, .dijkstra-cell.end { color: #fff; }
-.dijkstra-controls button { min-height: 44px; }
-.dijkstra-cell.visited { animation: dijkstra-reveal 0.2s ease-out; }
-.dijkstra-cell.path { animation: dijkstra-reveal 0.25s ease-out; }
-@keyframes dijkstra-reveal { from { opacity: 0.4; } to { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) {
-  .dijkstra-cell { animation: none; transition: none; }
-  .dijkstra-cell:hover { transform: none; }
-}
-@media (max-width: 700px) {
-  .dijkstra-project { padding: 12px; }
-  .dijkstra-header h2 { font-size: 1.5rem; }
-  .dijkstra-stats { gap: 8px; }
-  .dijkstra-stats div { padding: 10px; }
-}
-
-.algorithm-select { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-.algorithm-select select { max-width: 100%; min-height: 44px; padding: 8px; border: 1px solid #315b7d; border-radius: 6px; background: white; color: #202124; }

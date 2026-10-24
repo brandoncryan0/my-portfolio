@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./DijkstraVisualizer.css";
+
 import { START, END, keyOf, createGrid, dijkstra, aStar } from "./dijkstra";
 
 import { primMaze } from "./prim";
@@ -7,23 +8,30 @@ import { primMaze } from "./prim";
 export default function DijkstraVisualizer() {
   const runId = useRef(0);
   const timer = useRef(null);
-  useEffect(() => () => {
-    runId.current += 1;
-    clearTimeout(timer.current);
-  }, []);
+
+  useEffect(
+    () => () => {
+      runId.current += 1;
+      clearTimeout(timer.current);
+    },
+    [],
+  );
+
   const [algorithm, setAlgorithm] = useState("dijkstra");
-  const isMaze = algorithm === "prim";
-  const algorithmName = isMaze ? "Prim's Maze" : algorithm === "astar" ? "A*" : "Dijkstra";
+
+  const algorithmName = algorithm === "astar" ? "A*" : "Dijkstra";
+
   const [status, setStatus] = useState("Ready to explore.");
+
   const [grid, setGrid] = useState(createGrid);
 
   const [visitedCells, setVisitedCells] = useState(new Set());
-
   const [pathCells, setPathCells] = useState(new Set());
 
   const [brush, setBrush] = useState("wall");
-
   const [running, setRunning] = useState(false);
+
+  const [statsMode, setStatsMode] = useState("solver");
 
   const [stats, setStats] = useState({
     visited: 0,
@@ -44,6 +52,7 @@ export default function DijkstraVisualizer() {
     }
 
     resetVisualization();
+
     setGrid((currentGrid) => {
       const copy = currentGrid.map((gridRow) =>
         gridRow.map((cell) => ({ ...cell })),
@@ -80,45 +89,48 @@ export default function DijkstraVisualizer() {
     }
 
     const id = ++runId.current;
-    const sleep = (ms) => new Promise((resolve) => {
-      timer.current = setTimeout(resolve, ms);
-    });
+
+    const sleep = (ms) =>
+      new Promise((resolve) => {
+        timer.current = setTimeout(resolve, ms);
+      });
+
     setRunning(true);
-    setStatus(isMaze ? "Carving a maze..." : "Exploring nodes...");
-    setStats({ visited: 0, cost: null, runtime: null });
+    setStatsMode("solver");
+
+    setStatus("Exploring nodes...");
+
+    setStats({
+      visited: 0,
+      cost: null,
+      runtime: null,
+    });
 
     setVisitedCells(new Set());
     setPathCells(new Set());
 
     const startTime = performance.now();
 
-    const result = isMaze ? primMaze() : algorithm === "astar" ? aStar(grid) : dijkstra(grid);
+    const result = algorithm === "astar" ? aStar(grid) : dijkstra(grid);
 
     const runtime = performance.now() - startTime;
 
-    if (isMaze) {
-      setGrid(result.grid.map((row, r) => row.map((_, c) =>
-        (r === START.row && c === START.col) || (r === END.row && c === END.col)
-          ? { type: "open", weight: 1 } : { type: "wall", weight: Infinity },
-      )));
-      for (let index = 0; index < result.carvedOrder.length; index++) {
-        if (runId.current !== id) return;
-        const { row, col } = result.carvedOrder[index];
-        setGrid((current) => current.map((cells, r) => r === row
-          ? cells.map((cell, c) => c === col ? { type: "open", weight: 1 } : cell) : cells));
-        setStats({ visited: index + 1, cost: null, runtime: runtime.toFixed(2) });
-        await sleep(20);
-      }
-      if (runId.current !== id) return;
-      setStatus("Maze complete. Choose Dijkstra or A* to find its shortest path.");
-      setRunning(false);
-      return;
-    }
+    setStats({
+      visited: 0,
+      cost: null,
+      runtime: runtime.toFixed(2),
+    });
 
-    setStats({ visited: 0, cost: null, runtime: runtime.toFixed(2) });
     for (const cell of result.visitedOrder) {
-      if (runId.current !== id) return;
-      setStats((current) => ({ ...current, visited: current.visited + 1 }));
+      if (runId.current !== id) {
+        return;
+      }
+
+      setStats((current) => ({
+        ...current,
+        visited: current.visited + 1,
+      }));
+
       setVisitedCells((current) => {
         const next = new Set(current);
 
@@ -130,10 +142,21 @@ export default function DijkstraVisualizer() {
       await sleep(12);
     }
 
-    if (runId.current !== id) return;
-    setStatus(result.path.length ? "Tracing the shortest path..." : "No path found. Erase some walls and try again.");
+    if (runId.current !== id) {
+      return;
+    }
+
+    setStatus(
+      result.path.length
+        ? "Tracing the shortest path..."
+        : "No path found. Erase some walls and try again.",
+    );
+
     for (const cell of result.path) {
-      if (runId.current !== id) return;
+      if (runId.current !== id) {
+        return;
+      }
+
       setPathCells((current) => {
         const next = new Set(current);
 
@@ -145,8 +168,14 @@ export default function DijkstraVisualizer() {
       await sleep(35);
     }
 
-    if (runId.current !== id) return;
-    if (result.path.length) setStatus("Shortest path found.");
+    if (runId.current !== id) {
+      return;
+    }
+
+    if (result.path.length) {
+      setStatus("Shortest path found.");
+    }
+
     setStats({
       visited: result.visitedOrder.length,
       cost: result.cost === Infinity ? "No path" : result.cost,
@@ -156,11 +185,22 @@ export default function DijkstraVisualizer() {
     setRunning(false);
   }
 
-  function resetVisualization() {
-    runId.current += 1;
-    clearTimeout(timer.current);
-    setRunning(false);
-    setStatus("Ready to explore.");
+  async function generateMaze() {
+    if (running) {
+      return;
+    }
+
+    const id = ++runId.current;
+
+    const sleep = (ms) =>
+      new Promise((resolve) => {
+        timer.current = setTimeout(resolve, ms);
+      });
+
+    setRunning(true);
+    setStatsMode("maze");
+
+    setStatus("Carving a maze...");
 
     setVisitedCells(new Set());
     setPathCells(new Set());
@@ -170,11 +210,93 @@ export default function DijkstraVisualizer() {
       cost: null,
       runtime: null,
     });
+
+    const startTime = performance.now();
+
+    const result = primMaze();
+
+    const runtime = performance.now() - startTime;
+
+    setGrid(
+      result.grid.map((row, rowIndex) =>
+        row.map((_, colIndex) =>
+          (rowIndex === START.row && colIndex === START.col) ||
+          (rowIndex === END.row && colIndex === END.col)
+            ? {
+                type: "open",
+                weight: 1,
+              }
+            : {
+                type: "wall",
+                weight: Infinity,
+              },
+        ),
+      ),
+    );
+
+    for (let index = 0; index < result.carvedOrder.length; index++) {
+      if (runId.current !== id) {
+        return;
+      }
+
+      const { row, col } = result.carvedOrder[index];
+
+      setGrid((current) =>
+        current.map((cells, rowIndex) =>
+          rowIndex === row
+            ? cells.map((cell, colIndex) =>
+                colIndex === col
+                  ? {
+                      type: "open",
+                      weight: 1,
+                    }
+                  : cell,
+              )
+            : cells,
+        ),
+      );
+
+      setStats({
+        visited: index + 1,
+        cost: null,
+        runtime: runtime.toFixed(2),
+      });
+
+      await sleep(20);
+    }
+
+    if (runId.current !== id) {
+      return;
+    }
+
+    setStatus("Maze complete. Run Dijkstra or A* to find its shortest path.");
+
+    setRunning(false);
+  }
+
+  function resetVisualization() {
+    runId.current += 1;
+
+    clearTimeout(timer.current);
+
+    setRunning(false);
+    setStatus("Ready to explore.");
+
+    setVisitedCells(new Set());
+    setPathCells(new Set());
+
+    setStatsMode("solver");
+
+    setStats({
+      visited: 0,
+      cost: null,
+      runtime: null,
+    });
   }
 
   function clearBoard() {
-
     setGrid(createGrid());
+
     resetVisualization();
   }
 
@@ -204,16 +326,14 @@ export default function DijkstraVisualizer() {
     <section className="dijkstra-project">
       <div className="dijkstra-header">
         <div>
-          <p className="section-label">ALGORITHM VISUALIZER</p>
+          <p className="section-label">PATHFINDING VISUALIZER</p>
 
           <h2>{algorithmName}</h2>
 
           <p className="dijkstra-description">
-            {isMaze
-              ? "Randomized Prim's grows a spanning tree to generate a maze. It replaces the current board, including weights."
-              : algorithm === "astar"
-                ? "A* combines travel cost with Manhattan distance to guide its shortest-path search toward the target."
-                : "Dijkstra explores nodes in increasing travel cost to find the shortest path."}
+            {algorithm === "astar"
+              ? "A* combines travel cost with Manhattan distance to guide its shortest-path search toward the target."
+              : "Dijkstra explores nodes in increasing travel cost to find the shortest path."}
           </p>
         </div>
 
@@ -222,23 +342,47 @@ export default function DijkstraVisualizer() {
           onClick={runAlgorithm}
           disabled={running}
         >
-          {running ? "Running..." : isMaze ? "Generate Maze" : `Run ${algorithmName}`}
+          {running ? "Running..." : `Run ${algorithmName}`}
         </button>
       </div>
 
-      <div className="dijkstra-controls">
-        <label className="algorithm-select">
-          Algorithm
-          <select value={algorithm} disabled={running} onChange={(event) => {
-            resetVisualization();
-            setAlgorithm(event.target.value);
-          }}>
-            <option value="dijkstra">Dijkstra</option>
-            <option value="astar">A* (A-star)</option>
-            <option value="prim">Prim's (maze generator)</option>
-          </select>
-        </label>
-        <span>Terrain:</span>
+      <div className="dijkstra-control-groups">
+        <div className="dijkstra-control-group">
+          <p className="control-group-label">PATHFINDING</p>
+
+          <div className="dijkstra-controls">
+            <label className="algorithm-select">
+              Algorithm
+              <select
+                value={algorithm}
+                disabled={running}
+                onChange={(event) => {
+                  resetVisualization();
+                  setAlgorithm(event.target.value);
+                }}
+              >
+                <option value="dijkstra">Dijkstra</option>
+                <option value="astar">A* (A-star)</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div className="dijkstra-control-group maze-control-group">
+          <p className="control-group-label">MAZE GENERATOR</p>
+
+          <button
+            className="maze-button"
+            onClick={generateMaze}
+            disabled={running}
+          >
+            Generate Prim's Maze
+          </button>
+        </div>
+      </div>
+
+      <div className="terrain-controls">
+        <span className="terrain-label">Terrain</span>
 
         <button
           className={brush === "wall" ? "active" : ""}
@@ -267,62 +411,95 @@ export default function DijkstraVisualizer() {
           Erase
         </button>
 
-        <button onClick={resetVisualization}>{running ? "Stop / Reset Search" : "Reset Search"}</button>
+        <span className="terrain-divider" />
+
+        <button onClick={resetVisualization}>
+          {running ? "Stop / Reset Search" : "Reset Search"}
+        </button>
 
         <button onClick={clearBoard}>Clear Board</button>
       </div>
 
       <p id="dijkstra-instructions" className="dijkstra-description">
-        Click or tap cells to paint terrain, or use Tab and Enter / Space.
-        S is the start; E is the target. Movement is horizontal or vertical.
-        Entering a normal cell costs 1; a weighted cell costs 5. The start costs 0.
-        On small screens, scroll the board sideways.
+        Click or tap cells to paint terrain, or use Tab and Enter / Space. S is
+        the start; E is the target. Movement is horizontal or vertical. Entering
+        a normal cell costs 1; a weighted cell costs 5. The start costs 0. On
+        small screens, scroll the board sideways.
       </p>
-      <p role="status">{status}</p>
-      <div className="dijkstra-board" role="region" aria-label="Pathfinding board" aria-describedby="dijkstra-instructions" tabIndex={0}>
-      <div className="dijkstra-grid">
-        {grid.map((row, rowIndex) =>
-          row.map((cell, colIndex) => (
-            <button
-              key={keyOf(rowIndex, colIndex)}
-              className={getCellClass(rowIndex, colIndex, cell)}
-              onClick={() => editCell(rowIndex, colIndex)}
-              disabled={running}
-              aria-label={`Row ${rowIndex + 1}, column ${colIndex + 1}: ${rowIndex === START.row && colIndex === START.col ? "start" : rowIndex === END.row && colIndex === END.col ? "target" : cell.type === "wall" ? "wall" : `cost ${cell.weight}`}${pathCells.has(keyOf(rowIndex, colIndex)) ? ", shortest path" : visitedCells.has(keyOf(rowIndex, colIndex)) ? ", explored" : ""}`}
-            >
-              {rowIndex === START.row && colIndex === START.col
-                ? "S"
-                : rowIndex === END.row && colIndex === END.col
-                  ? "E"
-                  : cell.weight === 5 && cell.type !== "wall"
-                    ? "5"
-                    : ""}
-            </button>
-          )),
-        )}
-      </div>
 
+      <p role="status">{status}</p>
+
+      <div
+        className="dijkstra-board"
+        role="region"
+        aria-label="Pathfinding board"
+        aria-describedby="dijkstra-instructions"
+        tabIndex={0}
+      >
+        <div className="dijkstra-grid">
+          {grid.map((row, rowIndex) =>
+            row.map((cell, colIndex) => (
+              <button
+                key={keyOf(rowIndex, colIndex)}
+                className={getCellClass(rowIndex, colIndex, cell)}
+                onClick={() => editCell(rowIndex, colIndex)}
+                disabled={running}
+                aria-label={`Row ${rowIndex + 1}, column ${colIndex + 1}: ${
+                  rowIndex === START.row && colIndex === START.col
+                    ? "start"
+                    : rowIndex === END.row && colIndex === END.col
+                      ? "target"
+                      : cell.type === "wall"
+                        ? "wall"
+                        : `cost ${cell.weight}`
+                }${
+                  pathCells.has(keyOf(rowIndex, colIndex))
+                    ? ", shortest path"
+                    : visitedCells.has(keyOf(rowIndex, colIndex))
+                      ? ", explored"
+                      : ""
+                }`}
+              >
+                {rowIndex === START.row && colIndex === START.col
+                  ? "S"
+                  : rowIndex === END.row && colIndex === END.col
+                    ? "E"
+                    : cell.weight === 5 && cell.type !== "wall"
+                      ? "5"
+                      : ""}
+              </button>
+            )),
+          )}
+        </div>
       </div>
 
       <div className="dijkstra-stats">
         <div>
-          <span>{isMaze ? "Cells Carved" : "Nodes Explored"}</span>
+          <span>
+            {statsMode === "maze" ? "Cells Carved" : "Nodes Explored"}
+          </span>
+
           <strong>{stats.visited}</strong>
         </div>
 
         <div>
           <span>Path Cost</span>
+
           <strong>{stats.cost ?? "—"}</strong>
         </div>
 
         <div>
           <span>Runtime (compute only)</span>
+
           <strong>{stats.runtime ? `${stats.runtime} ms` : "—"}</strong>
         </div>
 
         <div>
           <span>Data Structure</span>
-          <strong>{isMaze ? "Random Frontier" : "Min Heap"}</strong>
+
+          <strong>
+            {statsMode === "maze" ? "Random Frontier" : "Min Heap"}
+          </strong>
         </div>
       </div>
 
