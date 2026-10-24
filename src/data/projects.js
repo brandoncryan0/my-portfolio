@@ -41,7 +41,6 @@ const projects = [
       "Separate tested mathematical calculations from a responsive SVG plane, and interpolate between the identity and the selected matrix. Render the derivation using KaTeX.",
     result:
       "Explore presets or a custom matrix, compare algebraic and geometric behavior, and distinguish repeated, defective, and complex eigenvalue cases.",
-    image: "/images/projects/eigenvalue-preview.png",
   },
   {
     id: "technical-writing",
