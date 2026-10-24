@@ -24,23 +24,38 @@ const projects = [
       "Users can build custom boards, assign terrain costs, generate mazes, and compare explored nodes, path cost, and computation time across algorithms, including cases where no valid path exists.",
 
     image: "/images/projects/dijkstra-preview.png",
+
+    githubUrl:
+      "https://github.com/brandoncryan0/my-portfolio/tree/main/src/components/DijkstraVisualizer",
   },
   {
     id: "eigenvalue-visualizer",
+
     image: "/images/projects/eigenvalue-preview.png",
+
     title: "Eigenvalue & Eigenvector Visualizer",
+
     category: "MATHEMATICS / PROGRAMMING",
+
     description:
       "An interactive linear algebra tool for visualizing matrix transformations, eigenvalues, eigenvectors, and preserved directions in the plane.",
+
     skills: ["Linear Algebra", "React", "JavaScript", "SVG"],
+
     overview:
       "An interactive connection between matrix calculations and geometry, with real and complex eigenvalues, eigenvectors, and a step-by-step characteristic polynomial.",
+
     problem:
       "Eigenvectors and diagonalizability can feel abstract without seeing how a matrix stretches, reflects, shears, or rotates the plane.",
+
     approach:
       "Separate tested mathematical calculations from a responsive SVG plane, and interpolate between the identity and the selected matrix. Render the derivation using KaTeX.",
+
     result:
       "Explore presets or a custom matrix, compare algebraic and geometric behavior, and distinguish repeated, defective, and complex eigenvalue cases.",
+
+    githubUrl:
+      "https://github.com/brandoncryan0/my-portfolio/tree/main/src/components/EigenvalueVisualizer",
   },
   {
     id: "technical-writing",
