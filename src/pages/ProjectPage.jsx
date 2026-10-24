@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import projects from "../data/projects";
@@ -17,6 +17,17 @@ function ProjectPage() {
   );
 
   const project = projects[projectIndex];
+
+  useEffect(() => {
+    if (project) {
+      document.title = `${project.title} | Brandon Cryan`;
+    }
+
+    return () => {
+      document.title =
+        "Brandon Cryan | Mathematics, Software & Technical Communication";
+    };
+  }, [project]);
 
   if (!project) {
     return (
