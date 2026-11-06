@@ -128,6 +128,43 @@ const projects = [
 
     githubUrl: "https://github.com/brandoncryan0/fitness-tracker",
   },
+  {
+    id: "react-deployment-guide",
+
+    title: "React Deployment Guide",
+
+    category: "TECHNICAL WRITING / DOCS-AS-CODE",
+
+    description:
+      "A beginner-focused deployment guide for publishing a React and Vite website with GitHub and Vercel, built as a version-controlled documentation site.",
+
+    skills: [
+      "Technical Writing",
+      "MkDocs",
+      "Markdown",
+      "GitHub",
+      "Vercel",
+      "Mermaid",
+    ],
+
+    image: "/images/projects/react-deployment-guide-preview.png",
+
+    overview:
+      "A step-by-step documentation site that guides beginner developers through preparing a React and Vite project, setting up Git, publishing to GitHub, deploying with Vercel, verifying the production site, and troubleshooting common deployment problems.",
+
+    problem:
+      "Deploying a first React project requires moving between local development, Git, GitHub, build tools, and a hosting platform. For a new developer, the process can be difficult to follow because instructions are often spread across multiple tools and assume prior knowledge.",
+
+    approach:
+      "I designed the guide around a sequential task-based workflow and wrote each section for a beginner audience. I used MkDocs and Markdown for docs-as-code authoring, Mermaid for process diagrams, annotated interface screenshots for visual guidance, reusable troubleshooting content, and GitHub for version control. The documentation itself is deployed through Vercel.",
+
+    result:
+      "The finished project is a responsive documentation site that takes a reader from local project verification through a live production deployment while also providing update procedures, troubleshooting guidance, a Git reference, and optional custom-domain instructions.",
+
+    liveUrl: "YOUR-VERCEL-DEPLOYMENT-URL",
+
+    githubUrl: "https://github.com/brandoncryan0/react-deployment-guide",
+  },
 ];
 
 export default projects;

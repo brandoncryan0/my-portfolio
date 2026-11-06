@@ -102,6 +102,27 @@ function ProjectPage() {
       </header>
 
       {/* =====================================================
+    REACT DEPLOYMENT GUIDE PREVIEW
+    ===================================================== */}
+
+      {project.id === "react-deployment-guide" && project.image && (
+        <section className="project-case-study-visual">
+          <p className="section-label">DOCUMENTATION SITE</p>
+
+          <div className="project-case-study-image">
+            <img
+              src={project.image}
+              alt="React Deployment Guide documentation website"
+            />
+          </div>
+
+          <p className="project-image-caption">
+            Responsive MkDocs documentation covering the React deployment
+            workflow from local development through GitHub and Vercel.
+          </p>
+        </section>
+      )}
+      {/* =====================================================
           FITNESS TRACKER MAIN SCREEN
           ===================================================== */}
 
