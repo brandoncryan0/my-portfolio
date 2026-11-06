@@ -161,7 +161,7 @@ const projects = [
     result:
       "The finished project is a responsive documentation site that takes a reader from local project verification through a live production deployment while also providing update procedures, troubleshooting guidance, a Git reference, and optional custom-domain instructions.",
 
-    liveUrl: "YOUR-VERCEL-DEPLOYMENT-URL",
+    liveUrl: "https://react-deployment-guide.vercel.app/",
 
     githubUrl: "https://github.com/brandoncryan0/react-deployment-guide",
   },
